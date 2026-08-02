@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    font-family: 'Inter', sans-serif;
+    background-color: #FFFFFF;
+    color: #0A0A0A;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    letter-spacing: -0.03em;
+  }
+}
+
+/* Custom Luxury Light Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #FFFFFF;
+}
+::-webkit-scrollbar-thumb {
+  background: #D4D4D8;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #000000;
+}
+
+/* Subtle noise overlay */
+.bg-noise {
+  background-image: radial-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+/* Glassmorphism utility for Light Theme */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
+}
+
+.glass-panel-hover:hover {
+  border-color: rgba(0, 0, 0, 0.2);
+  background: #FFFFFF;
+  box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.1);
+}
+
+/* Custom Cursor Hide Native */
+@media (pointer: fine) {
+  body.custom-cursor-active {
+    cursor: none;
+  }
+  body.custom-cursor-active a, 
+  body.custom-cursor-active button,
+  body.custom-cursor-active input,
+  body.custom-cursor-active select {
+    cursor: none;
+  }
+}
