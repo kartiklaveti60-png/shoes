@@ -18,7 +18,7 @@ export const AIStylistDrawer: React.FC = () => {
       id: '1',
       sender: 'ai',
       text: "Greetings. I am your personal SOLE AI Fashion Architect. Ask me anything about sneaker sizing, outfit color matching, or resell projections.",
-      suggestedActions: ["Style me for Friday night", "Which sneaker holds highest resell?", "How does CYBER-X fit?"]
+      suggestedActions: ["Style me for Friday night", "Which sneaker holds highest resell?", "How does Air Jordan 1 fit?"]
     }
   ]);
 

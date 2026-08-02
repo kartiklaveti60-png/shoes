@@ -15,7 +15,7 @@ const productSchema = new mongoose.Schema({
   name: { type: String, required: true, trim: true },
   slug: { type: String, required: true, unique: true, lowercase: true },
   brand: { type: String, required: true, index: true },
-  category: { type: String, required: true, enum: ['Sneakers', 'Jordan', 'Running', 'Basketball', 'Lifestyle', 'Limited Edition', 'Accessories'], index: true },
+  category: { type: String, required: true, enum: ['Sneakers', 'Hyped', 'Running', 'Basketball', 'Lifestyle', 'Limited Edition', 'Accessories'], index: true },
   gender: { type: String, enum: ['Men', 'Women', 'Unisex', 'Kids'], default: 'Unisex' },
   price: { type: Number, required: true },
   originalPrice: { type: Number },
@@ -25,6 +25,9 @@ const productSchema = new mongoose.Schema({
   isFeatured: { type: Boolean, default: false },
   isTrending: { type: Boolean, default: false },
   isLimited: { type: Boolean, default: false },
+  isHyped: { type: Boolean, default: true },
+  hypeScore: { type: Number, default: 95 },
+  liveViewers: { type: Number, default: 1200 },
   
   description: { type: String, required: true },
   story: { type: String },

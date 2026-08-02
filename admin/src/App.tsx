@@ -33,7 +33,7 @@ export const App: React.FC = () => {
 
   // State: Orders
   const [orders, setOrders] = useState<OrderItem[]>([
-    { id: 'SOLE-984210', user: 'Alex Mercer', sneaker: "SOLE CYBER-X 01 'NEO TOKYO'", price: 340, date: 'Just now', status: 'Processing' },
+    { id: 'SOLE-984210', user: 'Alex Mercer', sneaker: "Air Jordan 1 Game-Worn", price: 560000, date: 'Just now', status: 'Processing' },
     { id: 'SOLE-741299', user: 'Kaito Tanaka', sneaker: 'AEROSPACE QUANTUM RUNNER', price: 280, date: '14 mins ago', status: 'Shipped' },
     { id: 'SOLE-612988', user: 'Elena Rostova', sneaker: 'JORDAN MONOLITH RETRO HIGH', price: 450, date: '1 hour ago', status: 'Delivered' },
     { id: 'SOLE-551023', user: 'Marcus Vance', sneaker: 'SOLE APEX BASKETBALL PRO', price: 260, date: '3 hours ago', status: 'Processing' }
@@ -42,13 +42,23 @@ export const App: React.FC = () => {
   // State: Inventory
   const [products, setProducts] = useState<ProductItem[]>([
     {
-      id: 'prod_cyber_x',
-      name: "SOLE CYBER-X 01 'NEO TOKYO'",
-      brand: 'SOLE LABS',
+      id: 'prod_lv_af1',
+      name: "Louis Vuitton x Nike Air Force 1",
+      brand: 'LOUIS VUITTON',
       category: 'Limited Edition',
-      price: 340,
+      price: 352800,
+      stock: 16,
+      image: '/images/louis-vuitton-nike-air-force-1.png',
+      isLimited: true
+    },
+    {
+      id: 'prod_cyber_x',
+      name: "Air Jordan 1 Game-Worn",
+      brand: 'JORDAN',
+      category: 'Limited Edition',
+      price: 560000,
       stock: 33,
-      image: 'https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&q=80&w=400',
+      image: '/images/air-jordan-1-game-worn.jpg',
       isLimited: true
     },
     {

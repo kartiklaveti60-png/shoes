@@ -56,9 +56,9 @@ io.on('connection', (socket) => {
   const purchaseInterval = setInterval(() => {
     socket.emit('recent_purchase', {
       user: 'Marcus K. (Tokyo)',
-      sneaker: "SOLE CYBER-X 01 'NEO TOKYO'",
+      sneaker: "Air Jordan 1 Game-Worn",
       timeAgo: 'Just now',
-      price: '$340'
+      price: '$560,000'
     });
   }, 25000);
 

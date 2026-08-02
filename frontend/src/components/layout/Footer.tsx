@@ -4,8 +4,8 @@ import { ArrowRight, ShieldCheck, Sparkles } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="bg-gray-50 text-black border-t border-gray-200 pt-20 pb-12 px-4">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-12 pb-16 border-b border-gray-200">
+    <footer className="bg-gray-50 text-black border-t border-gray-200 pt-20 pb-12 px-6 md:px-12 lg:px-16">
+      <div className="max-w-[1700px] w-full mx-auto grid grid-cols-1 md:grid-cols-12 gap-12 pb-16 border-b border-gray-200">
         
         {/* Brand Story */}
         <div className="md:col-span-5 space-y-4">

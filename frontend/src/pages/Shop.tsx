@@ -17,7 +17,7 @@ export const Shop: React.FC = () => {
   const { addItem } = useCartStore();
   const { toggleWishlist, isInWishlist } = useWishlistStore();
 
-  const categories = ['All', 'Limited Edition', 'Jordan', 'Running', 'Basketball', 'Lifestyle'];
+  const categories = ['All', 'Hyped', 'Limited Edition', 'Running', 'Basketball', 'Lifestyle'];
   const genders = ['All', 'Men', 'Women', 'Unisex'];
 
   // Filtered & Sorted products
@@ -25,7 +25,11 @@ export const Shop: React.FC = () => {
     let list = [...MOCK_PRODUCTS];
 
     if (selectedCategory !== 'All') {
-      list = list.filter(p => p.category.toLowerCase() === selectedCategory.toLowerCase());
+      if (selectedCategory === 'Hyped') {
+        list = list.filter(p => p.isHyped === true || p.category === 'Hyped');
+      } else {
+        list = list.filter(p => p.category.toLowerCase() === selectedCategory.toLowerCase());
+      }
     }
 
     if (selectedGender !== 'All') {
@@ -52,7 +56,8 @@ export const Shop: React.FC = () => {
   }, [selectedCategory, selectedGender, searchQuery, sortBy]);
 
   return (
-    <div className="min-h-screen bg-white text-black pt-28 pb-20 px-4 max-w-7xl mx-auto">
+    <div className="w-full min-h-screen bg-white text-black pt-28 pb-20 px-6 md:px-12 lg:px-16">
+      <div className="max-w-[1700px] mx-auto">
       
       {/* Header Title */}
       <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 pb-6 border-b border-black/10">
@@ -238,6 +243,7 @@ export const Shop: React.FC = () => {
         </div>
       )}
 
+      </div>
     </div>
   );
 };

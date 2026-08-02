@@ -36,10 +36,10 @@ export const useCartStore = create<CartState>((set, get) => ({
     {
       id: 'prod_cyber_x-US 10-Stealth Obsidian',
       productId: 'prod_cyber_x',
-      name: "SOLE CYBER-X 01 'NEO TOKYO'",
-      slug: 'sole-cyber-x-01-neo-tokyo',
-      price: 340,
-      image: 'https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&q=80&w=600',
+      name: "Air Jordan 1 Game-Worn",
+      slug: 'air-jordan-1-game-worn',
+      price: 560000,
+      image: '/images/air-jordan-1-game-worn.jpg',
       size: 'US 10',
       color: 'Stealth Obsidian',
       quantity: 1

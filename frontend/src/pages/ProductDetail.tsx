@@ -22,7 +22,8 @@ export const ProductDetail: React.FC = () => {
   const inWishlist = isInWishlist(product._id);
 
   return (
-    <div className="min-h-screen bg-white text-black pt-24 pb-20 px-4 max-w-7xl mx-auto">
+    <div className="w-full min-h-screen bg-white text-black pt-24 pb-20 px-6 md:px-12 lg:px-16">
+      <div className="max-w-[1700px] mx-auto">
       
       {/* Foot Scanner Modal */}
       <FootScannerModal isOpen={scannerOpen} onClose={() => setScannerOpen(false)} />
@@ -229,6 +230,67 @@ export const ProductDetail: React.FC = () => {
           </div>
 
         </div>
+
+      </div>
+
+      {/* ================= ARCHIVAL DETAIL GALLERY & SPECIFICATIONS ================= */}
+      <section className="mt-20 pt-12 border-t border-gray-200 space-y-8">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+          <div>
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FF5A1F]/10 text-[#FF5A1F] text-xs font-bold uppercase mb-2">
+              <Sparkles className="w-3.5 h-3.5" /> ARCHIVAL CERTIFICATION & DETAILS
+            </div>
+            <h2 className="font-display text-2xl sm:text-3xl font-black text-black uppercase">
+              HIGH-RESOLUTION DETAIL GALLERY
+            </h2>
+            <p className="text-sm text-gray-500 max-w-xl font-medium mt-1">
+              {product.story || product.description}
+            </p>
+          </div>
+          <div className="text-xs text-gray-500 font-semibold bg-gray-100 px-4 py-2 rounded-xl border border-gray-200">
+            AUTHENTICATED VIA MEARS & PSA/DNA • 100% GUARANTEED
+          </div>
+        </div>
+
+        {/* Detail Images Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {product.images.map((imgUrl, i) => {
+            const labels = [
+              "Full Lateral Profile & Vintage Finish",
+              "Authentic Michael Jordan Signed Collar",
+              "Top-Down Insoles & Tongue Tag Spec",
+              "Original 1985 Outsole & Wear Pattern"
+            ];
+            const caption = labels[i] || `Detail Spec Shot #${i + 1}`;
+
+            return (
+              <div 
+                key={i} 
+                onClick={() => {
+                  setActiveImage(imgUrl);
+                  setViewMode('2D');
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+                className="group glass-panel rounded-3xl p-4 border border-gray-200 hover:border-black transition-all cursor-pointer bg-gray-50 hover:bg-white shadow-sm flex flex-col justify-between"
+              >
+                <div className="h-64 overflow-hidden rounded-2xl flex items-center justify-center bg-white p-2">
+                  <img 
+                    src={imgUrl} 
+                    alt={caption} 
+                    className="max-h-full object-contain group-hover:scale-110 transition-transform duration-500" 
+                  />
+                </div>
+                <div className="pt-4 flex items-center justify-between">
+                  <span className="text-xs font-bold text-black uppercase tracking-tight">{caption}</span>
+                  <span className="text-[10px] font-extrabold text-[#FF5A1F] uppercase group-hover:underline flex items-center gap-0.5">
+                    VIEW <ArrowRight className="w-3 h-3" />
+                  </span>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </section>
 
       </div>
     </div>

@@ -55,10 +55,10 @@ export const Account: React.FC = () => {
               {
                 id: 'SOLE-984210',
                 date: 'JUL 28, 2026',
-                sneaker: "SOLE CYBER-X 01 'NEO TOKYO'",
-                price: '$340',
+                sneaker: "Air Jordan 1 Game-Worn",
+                price: '$560,000',
                 status: 'Out For Delivery',
-                image: 'https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&q=80&w=200'
+                image: '/images/air-jordan-1-game-worn.jpg'
               },
               {
                 id: 'SOLE-741299',

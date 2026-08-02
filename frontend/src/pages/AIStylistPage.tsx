@@ -10,7 +10,7 @@ export const AIStylistPage: React.FC = () => {
   const [generating, setGenerating] = useState(false);
   
   const [outfitResult, setOutfitResult] = useState<any>({
-    sneaker: "SOLE CYBER-X 01 'NEO TOKYO'",
+    sneaker: "Air Jordan 1 Game-Worn",
     matchScore: 99.4,
     layers: {
       top: { item: "Over-sized Heavyweight Cyber-Fleece Hoodie", color: "Matte Charcoal", brand: "SOLE LABS Studio" },

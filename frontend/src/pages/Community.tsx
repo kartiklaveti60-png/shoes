@@ -13,7 +13,7 @@ export const Community: React.FC = () => {
       tier: 'TITAN VIP',
       avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=200',
       image: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=80&w=1000',
-      caption: 'Late night Shibuya walk with the SOLE CYBER-X 01. Carbon fiber response is unreal.',
+      caption: 'Late night walk with the Air Jordan 1 Game-Worn. Iconic craftsmanship is unreal.',
       likes: 1420,
       comments: 38,
       isLiked: false

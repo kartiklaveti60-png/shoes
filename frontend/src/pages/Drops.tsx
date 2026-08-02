@@ -9,13 +9,13 @@ export const Drops: React.FC = () => {
   const dropsList = [
     {
       id: 'drop_1',
-      title: "SOLE CYBER-X 01 'NEO TOKYO'",
+      title: "Air Jordan 1 Game-Worn",
       date: 'AUG 05, 2026 • 09:00 EST',
-      retailPrice: 340,
+      retailPrice: 560000,
       resellEst: 650,
       tierRequired: 'TITAN & LEGEND VIP',
       edition: '1,000 Pairs Worldwide',
-      image: 'https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&q=80&w=1200',
+      image: '/images/air-jordan-1-game-worn.jpg',
       status: 'UPCOMING'
     },
     {

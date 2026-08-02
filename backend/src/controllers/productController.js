@@ -3,14 +3,54 @@ import Product from '../models/Product.js';
 // Default mock products dataset if database is empty or offline
 export const MOCK_PRODUCTS = [
   {
-    _id: "prod_cyber_x",
-    name: "SOLE CYBER-X 01 'NEO TOKYO'",
-    slug: "sole-cyber-x-01-neo-tokyo",
-    brand: "SOLE LABS",
+    _id: "prod_lv_af1",
+    name: "Louis Vuitton x Nike Air Force 1",
+    slug: "louis-vuitton-x-nike-air-force-1",
+    brand: "LOUIS VUITTON",
     category: "Limited Edition",
     gender: "Unisex",
-    price: 340,
-    originalPrice: 420,
+    price: 352800,
+    originalPrice: 380000,
+    resellEstimate: 420000,
+    isDrop: true,
+    isFeatured: true,
+    isTrending: true,
+    isLimited: true,
+    description: "Designed by Virgil Abloh for the Louis Vuitton Spring-Summer 2022 runway. Crafted in Fiesso d'Artico with signature Monogram calf leather.",
+    story: "Handcrafted in Louis Vuitton's legendary shoe atelier in Fiesso d'Artico, Italy, combining Nike's classic Air Force 1 silhouette with LV's iconic Monogram motifs and Virgil Abloh's signature quotation marks.",
+    technology: ["Encapsulated Nike Air Cushioning", "Fiesso d'Artico Hand-Stitched Construction", "Virgil Abloh Custom Lacing", "Louis Vuitton Damier Monogram"],
+    materials: ["Calfskin Leather with Monogram Print", "Natural Rawhide Piping", "Rubber Cupsole", "Gold-Plated Metal Eyelets"],
+    sustainabilityScore: 92,
+    carbonFootprintKg: 4.1,
+    comfortRating: 9.9,
+    images: [
+      "/images/louis-vuitton-nike-air-force-1.png",
+      "/images/louis-vuitton-af1-pair.png",
+      "/images/louis-vuitton-af1-trunk.png",
+      "/images/louis-vuitton-af1-detail.png"
+    ],
+    colors: [
+      { name: "Monogram Brown/Damier Azur", hex: "#7A4926", images: ["/images/louis-vuitton-nike-air-force-1.png", "/images/louis-vuitton-af1-pair.png", "/images/louis-vuitton-af1-trunk.png", "/images/louis-vuitton-af1-detail.png"] }
+    ],
+    sizes: [
+      { size: "US 8", stock: 2 },
+      { size: "US 9", stock: 4 },
+      { size: "US 10", stock: 6 },
+      { size: "US 11", stock: 3 },
+      { size: "US 12", stock: 1 }
+    ],
+    rating: 4.99,
+    numReviews: 218
+  },
+  {
+    _id: "prod_cyber_x",
+    name: "Air Jordan 1 Game-Worn",
+    slug: "air-jordan-1-game-worn",
+    brand: "JORDAN",
+    category: "Limited Edition",
+    gender: "Unisex",
+    price: 560000,
+    originalPrice: 600000,
     resellEstimate: 650,
     isDrop: true,
     isFeatured: true,
@@ -24,15 +64,13 @@ export const MOCK_PRODUCTS = [
     carbonFootprintKg: 3.8,
     comfortRating: 9.8,
     images: [
-      "https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&q=80&w=1200",
-      "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&q=80&w=1200",
-      "https://images.unsplash.com/photo-1608231387042-66d1773070a5?auto=format&fit=crop&q=80&w=1200",
-      "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&q=80&w=1200"
+      "/images/air-jordan-1-game-worn.jpg",
+      "/images/air-jordan-1-side.png",
+      "/images/air-jordan-1-signature.png",
+      "/images/air-jordan-1-top.png"
     ],
     colors: [
-      { name: "Stealth Obsidian", hex: "#111111", images: ["https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&q=80&w=1200"] },
-      { name: "Cyber Sunset", hex: "#FF5A1F", images: ["https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&q=80&w=1200"] },
-      { name: "Lunar Platinum", hex: "#E5E5E5", images: ["https://images.unsplash.com/photo-1608231387042-66d1773070a5?auto=format&fit=crop&q=80&w=1200"] }
+      { name: "Chicago Red/White/Black", hex: "#CE1126", images: ["/images/air-jordan-1-game-worn.jpg", "/images/air-jordan-1-side.png", "/images/air-jordan-1-signature.png", "/images/air-jordan-1-top.png"] }
     ],
     sizes: [
       { size: "US 8", stock: 4 },
