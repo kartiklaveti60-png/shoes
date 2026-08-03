@@ -36,7 +36,7 @@ export const FootScannerModal: React.FC<{ isOpen: boolean; onClose: () => void }
         {/* Header */}
         <div className="flex items-center justify-between pb-4 border-b border-black/10">
           <div className="flex items-center gap-2">
-            <Scan className="w-5 h-5 text-[#FF5A1F] animate-pulse" />
+            <Scan className="w-5 h-5 text-[#E60023] animate-pulse" />
             <h3 className="font-display font-black text-lg text-black">AI 3D FOOT SCANNER</h3>
           </div>
           <button onClick={onClose} className="p-1 text-gray-500 hover:text-black">
@@ -50,8 +50,8 @@ export const FootScannerModal: React.FC<{ isOpen: boolean; onClose: () => void }
             {/* Camera Viewfinder Mock */}
             <div className="relative h-48 bg-gray-100 rounded-2xl border border-gray-200 overflow-hidden flex flex-col items-center justify-center">
               {isScanning ? (
-                <div className="absolute inset-0 bg-[#FF5A1F]/10 flex flex-col items-center justify-center">
-                  <div className="w-full h-1 bg-[#FF5A1F] shadow-glow-orange animate-pulse" />
+                <div className="absolute inset-0 bg-[#E60023]/10 flex flex-col items-center justify-center">
+                  <div className="w-full h-1 bg-[#E60023] shadow-glow-red animate-pulse" />
                   <p className="mt-4 text-xs font-bold text-black uppercase tracking-wider animate-pulse">
                     Mapping 14,000 Spatial Micro-Points...
                   </p>
@@ -69,8 +69,8 @@ export const FootScannerModal: React.FC<{ isOpen: boolean; onClose: () => void }
             <div className="space-y-4 bg-gray-50 p-4 rounded-2xl border border-gray-200">
               <div>
                 <div className="flex justify-between text-xs font-bold text-black mb-1">
-                  <span className="flex items-center gap-1"><Ruler className="w-3.5 h-3.5 text-[#FF5A1F]" /> Foot Length</span>
-                  <span className="text-[#FF5A1F]">{footLength.toFixed(1)} cm</span>
+                  <span className="flex items-center gap-1"><Ruler className="w-3.5 h-3.5 text-[#E60023]" /> Foot Length</span>
+                  <span className="text-[#E60023]">{footLength.toFixed(1)} cm</span>
                 </div>
                 <input
                   type="range"
@@ -86,7 +86,7 @@ export const FootScannerModal: React.FC<{ isOpen: boolean; onClose: () => void }
               <div>
                 <div className="flex justify-between text-xs font-bold text-black mb-1">
                   <span>Foot Width (Ball of foot)</span>
-                  <span className="text-[#FF5A1F]">{footWidth.toFixed(1)} cm</span>
+                  <span className="text-[#E60023]">{footWidth.toFixed(1)} cm</span>
                 </div>
                 <input
                   type="range"
@@ -104,7 +104,7 @@ export const FootScannerModal: React.FC<{ isOpen: boolean; onClose: () => void }
             <button
               onClick={handleStartScan}
               disabled={isScanning}
-              className="w-full bg-black text-white py-3.5 rounded-2xl font-bold text-sm hover:bg-[#FF5A1F] transition-all shadow-lg flex items-center justify-center gap-2"
+              className="w-full bg-black text-white py-3.5 rounded-2xl font-bold text-sm hover:bg-[#E60023] transition-all shadow-lg flex items-center justify-center gap-2"
             >
               {isScanning ? 'ANALYZING 3D MESH...' : 'ANALYZE EXACT FIT'}
             </button>
@@ -139,7 +139,7 @@ export const FootScannerModal: React.FC<{ isOpen: boolean; onClose: () => void }
 
             <button
               onClick={onClose}
-              className="w-full bg-black text-white py-3.5 rounded-2xl font-bold text-sm hover:bg-[#FF5A1F] transition-all"
+              className="w-full bg-black text-white py-3.5 rounded-2xl font-bold text-sm hover:bg-[#E60023] transition-all"
             >
               APPLY SIZING TO SHOPPING
             </button>

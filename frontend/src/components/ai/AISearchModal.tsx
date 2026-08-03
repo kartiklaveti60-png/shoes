@@ -42,7 +42,7 @@ export const AISearchModal: React.FC<{ isOpen: boolean; onClose: () => void }> =
         {/* Header */}
         <div className="flex items-center justify-between pb-4 border-b border-black/10">
           <div className="flex items-center gap-2">
-            <Sparkles className="w-5 h-5 text-[#FF5A1F] animate-pulse" />
+            <Sparkles className="w-5 h-5 text-[#E60023] animate-pulse" />
             <h3 className="font-display font-black text-lg text-black">AI POWERED SEARCH</h3>
           </div>
           <button onClick={onClose} className="p-1 text-gray-500 hover:text-black">
@@ -67,7 +67,7 @@ export const AISearchModal: React.FC<{ isOpen: boolean; onClose: () => void }> =
               type="button"
               onClick={handleVoiceSearch}
               className={`p-2 rounded-xl border transition-all ${
-                isListening ? 'bg-[#FF5A1F] text-white animate-bounce border-[#FF5A1F]' : 'bg-gray-100 text-gray-700 hover:text-black border-gray-300'
+                isListening ? 'bg-[#E60023] text-white animate-bounce border-[#E60023]' : 'bg-gray-100 text-gray-700 hover:text-black border-gray-300'
               }`}
               title="Voice Search"
             >
@@ -75,7 +75,7 @@ export const AISearchModal: React.FC<{ isOpen: boolean; onClose: () => void }> =
             </button>
             <button
               type="submit"
-              className="bg-black text-white p-2 rounded-xl hover:bg-[#FF5A1F] transition-colors"
+              className="bg-black text-white p-2 rounded-xl hover:bg-[#E60023] transition-colors"
             >
               <ArrowRight className="w-4 h-4" />
             </button>

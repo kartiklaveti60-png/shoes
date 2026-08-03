@@ -62,24 +62,54 @@ export const App: React.FC = () => {
       isLimited: true
     },
     {
-      id: 'prod_quantum',
-      name: 'AEROSPACE QUANTUM RUNNER',
-      brand: 'QUANTUM',
-      category: 'Running',
-      price: 280,
-      stock: 42,
-      image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&q=80&w=400',
-      isLimited: false
-    },
-    {
       id: 'prod_jordan',
       name: 'JORDAN MONOLITH RETRO HIGH',
       brand: 'JORDAN',
-      category: 'Jordan',
+      category: 'Sneakers',
       price: 450,
       stock: 7,
       image: 'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&q=80&w=400',
       isLimited: true
+    },
+    {
+      id: 'prod_nike_af01',
+      name: 'NIKE AIR FORCE 01',
+      brand: 'NIKE',
+      category: 'Lifestyle',
+      price: 115,
+      stock: 63,
+      image: 'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&q=80&w=400',
+      isLimited: false
+    },
+    {
+      id: 'prod_nike_dunk_panda',
+      name: 'Nike Dunk Low Retro White Black Panda',
+      brand: 'NIKE',
+      category: 'Lifestyle',
+      price: 115,
+      stock: 67,
+      image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&q=80&w=400',
+      isLimited: false
+    },
+    {
+      id: 'prod_adidas_samba',
+      name: 'adidas SAMBA',
+      brand: 'ADIDAS',
+      category: 'Lifestyle',
+      price: 120,
+      stock: 57,
+      image: 'https://images.unsplash.com/photo-1608231387042-66d1773070a5?auto=format&fit=crop&q=80&w=400',
+      isLimited: false
+    },
+    {
+      id: 'prod_adidas_all_star',
+      name: 'adidas All Star',
+      brand: 'ADIDAS',
+      category: 'Lifestyle',
+      price: 130,
+      stock: 64,
+      image: '/images/adidas-all-star.png',
+      isLimited: false
     }
   ]);
 

@@ -18,38 +18,38 @@ function StylizedSneakerMesh() {
       {/* Carbon Fiber Outsole */}
       <mesh position={[0, -0.6, 0]}>
         <boxGeometry args={[3.2, 0.35, 1.3]} />
-        <meshStandardMaterial color="#0A0A0A" roughness={0.2} metalness={0.8} />
+        <meshStandardMaterial color="#E60023" roughness={0.3} metalness={0.2} />
       </mesh>
 
-      {/* Midsole Cushion */}
+      {/* Midsole Cushion - Classic Chicago White */}
       <mesh position={[0, -0.3, 0]}>
         <boxGeometry args={[3.0, 0.4, 1.25]} />
-        <MeshWobbleMaterial color="#000000" speed={1.5} factor={0.08} roughness={0.3} />
+        <MeshWobbleMaterial color="#FFFFFF" speed={1.5} factor={0.05} roughness={0.2} />
       </mesh>
 
-      {/* Main Upper Body */}
+      {/* Main Upper Body - Chicago Varsity Red */}
       <mesh position={[-0.2, 0.3, 0]}>
         <boxGeometry args={[2.2, 0.9, 1.15]} />
-        <meshStandardMaterial color="#171717" roughness={0.4} metalness={0.4} />
+        <meshStandardMaterial color="#E60023" roughness={0.3} metalness={0.2} />
       </mesh>
 
-      {/* Collar & Heel counter */}
+      {/* Collar & Heel Counter - Chicago Black */}
       <mesh position={[-0.8, 0.7, 0]}>
         <cylinderGeometry args={[0.55, 0.6, 0.9, 32]} />
-        <meshStandardMaterial color="#0A0A0A" roughness={0.3} metalness={0.7} />
+        <meshStandardMaterial color="#0A0A0A" roughness={0.2} metalness={0.6} />
       </mesh>
 
-      {/* Orange Hyper Accent */}
+      {/* Chicago Swoosh Accent */}
       <mesh position={[0.1, 0.35, 0.6]} rotation={[0, 0, -0.3]}>
         <boxGeometry args={[1.4, 0.15, 0.05]} />
-        <meshStandardMaterial color="#FF5A1F" emissive="#FF5A1F" emissiveIntensity={0.8} />
+        <meshStandardMaterial color="#000000" roughness={0.1} />
       </mesh>
 
-      {/* Translucent Toe Cap */}
+      {/* Translucent Toe Cap - Sail/White */}
       <mesh position={[0.9, 0.15, 0]}>
         <sphereGeometry args={[0.65, 32, 16]} />
         <meshPhysicalMaterial 
-          color="#000000" 
+          color="#FFFFFF" 
           transmission={0.85} 
           opacity={1} 
           transparent 
@@ -70,8 +70,8 @@ export const ThreeCanvas: React.FC<{ interactive?: boolean; className?: string }
       <Canvas camera={{ position: [0, 1.5, 5], fov: 45 }}>
         <ambientLight intensity={1.2} />
         <directionalLight position={[10, 10, 5]} intensity={3.0} color="#FFFFFF" />
-        <pointLight position={[-10, -5, -5]} intensity={2.5} color="#000000" />
-        <pointLight position={[0, 5, 0]} intensity={2.0} color="#FF5A1F" />
+        <pointLight position={[-10, -5, -5]} intensity={2.5} color="#0A0A0A" />
+        <pointLight position={[0, 5, 0]} intensity={2.5} color="#E60023" />
 
         <Float speed={2} rotationIntensity={0.5} floatIntensity={0.8}>
           <StylizedSneakerMesh />

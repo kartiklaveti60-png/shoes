@@ -7,7 +7,7 @@ interface WishlistState {
 }
 
 export const useWishlistStore = create<WishlistState>((set, get) => ({
-  wishlistIds: ['prod_quantum_runner', 'prod_air_monolith'],
+  wishlistIds: ['prod_off_white_aj1_chicago'],
 
   toggleWishlist: (productId) => set((state) => {
     const exists = state.wishlistIds.includes(productId);

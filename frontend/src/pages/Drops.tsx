@@ -14,7 +14,7 @@ export const Drops: React.FC = () => {
       retailPrice: 560000,
       resellEst: 650,
       tierRequired: 'TITAN & LEGEND VIP',
-      edition: '1,000 Pairs Worldwide',
+      edition: 'Only 1 Pair Worldwide',
       image: '/images/air-jordan-1-game-worn.jpg',
       status: 'UPCOMING'
     },
@@ -54,7 +54,7 @@ export const Drops: React.FC = () => {
       {/* Title */}
       <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black text-white text-xs font-bold uppercase">
-          <Flame className="w-4 h-4 text-[#FF5A1F]" /> EXCLUSIVE RELEASE CALENDAR
+          <Flame className="w-4 h-4 text-[#E60023]" /> EXCLUSIVE RELEASE CALENDAR
         </div>
         <h1 className="font-display text-4xl sm:text-6xl font-black uppercase text-black">HYPER DROPS</h1>
         <p className="text-gray-600 text-sm font-medium">
@@ -82,7 +82,7 @@ export const Drops: React.FC = () => {
               {/* Info */}
               <div className="lg:col-span-7 space-y-4">
                 <div className="flex flex-wrap items-center justify-between gap-2">
-                  <span className="text-xs font-bold text-[#FF5A1F] tracking-widest">{drop.date}</span>
+                  <span className="text-xs font-bold text-[#E60023] tracking-widest">{drop.date}</span>
                   <span className="bg-gray-100 text-black text-[11px] font-bold px-3 py-1 rounded-full border border-gray-300">
                     {drop.tierRequired}
                   </span>
@@ -111,7 +111,7 @@ export const Drops: React.FC = () => {
                     className={`px-6 py-3.5 rounded-full font-bold text-xs flex items-center gap-2 transition-all ${
                       isSub
                         ? 'bg-green-600 text-white shadow-md'
-                        : 'bg-black text-white hover:bg-[#FF5A1F] shadow-lg'
+                        : 'bg-black text-white hover:bg-[#E60023] shadow-lg'
                     }`}
                   >
                     <Bell className="w-4 h-4" />

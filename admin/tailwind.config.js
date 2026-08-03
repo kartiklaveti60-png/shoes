@@ -9,7 +9,9 @@ export default {
       colors: {
         bgPrimary: '#FFFFFF',
         bgCard: '#F8F8F9',
-        cyberOrange: '#FF5A1F',
+        accent: '#DC2626',
+        cyberRed: '#DC2626',
+        cyberOrange: '#DC2626',
         cyberGold: '#EAB308',
         cyberSuccess: '#16A34A'
       },

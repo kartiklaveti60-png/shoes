@@ -51,10 +51,10 @@ export const Community: React.FC = () => {
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 pb-6 border-b border-black/10">
         <div>
-          <span className="text-xs font-bold tracking-widest text-[#FF5A1F] uppercase">THE SNEAKER ROOM</span>
+          <span className="text-xs font-bold tracking-widest text-[#E60023] uppercase">THE SNEAKER ROOM</span>
           <h1 className="font-display text-4xl sm:text-5xl font-black uppercase mt-1 text-black">COMMUNITY GALLERY</h1>
         </div>
-        <button className="mt-4 md:mt-0 bg-black text-white px-6 py-3 rounded-full font-bold text-xs hover:bg-[#FF5A1F] transition-colors shadow-md flex items-center gap-2">
+        <button className="mt-4 md:mt-0 bg-black text-white px-6 py-3 rounded-full font-bold text-xs hover:bg-[#E60023] transition-colors shadow-md flex items-center gap-2">
           <Upload className="w-4 h-4" /> UPLOAD YOUR LOOK (+50 XP)
         </button>
       </div>

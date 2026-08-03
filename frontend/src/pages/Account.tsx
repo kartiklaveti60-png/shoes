@@ -20,7 +20,7 @@ export const Account: React.FC = () => {
             <div className="flex items-center gap-2">
               <h1 className="font-display text-2xl sm:text-3xl font-black uppercase text-black">{user?.name}</h1>
               <span className="bg-black text-white text-xs font-bold px-3 py-1 rounded-full uppercase flex items-center gap-1">
-                <ShieldCheck className="w-3.5 h-3.5 text-[#FF5A1F]" /> {user?.tier} VIP MEMBER
+                <ShieldCheck className="w-3.5 h-3.5 text-[#E60023]" /> {user?.tier} VIP MEMBER
               </span>
             </div>
             <p className="text-xs text-gray-500 mt-1 font-medium">{user?.email} • Member since 2026</p>
@@ -36,7 +36,7 @@ export const Account: React.FC = () => {
           <div className="h-8 w-px bg-gray-300" />
           <div className="text-center px-4">
             <span className="text-[10px] font-bold text-gray-500 block uppercase">SOLE COINS</span>
-            <span className="font-display font-black text-2xl text-[#FF5A1F]">{user?.coins} 🪙</span>
+            <span className="font-display font-black text-2xl text-[#E60023]">{user?.coins} 🪙</span>
           </div>
         </div>
       </div>
@@ -81,7 +81,7 @@ export const Account: React.FC = () => {
 
                 <div className="text-right">
                   <span className={`text-xs font-bold px-3 py-1 rounded-full border ${
-                    order.status === 'Delivered' ? 'bg-green-100 text-green-700 border-green-300' : 'bg-orange-100 text-orange-700 border-orange-300'
+                    order.status === 'Delivered' ? 'bg-green-100 text-green-700 border-green-300' : 'bg-red-100 text-red-700 border-red-300'
                   }`}>
                     ● {order.status}
                   </span>
@@ -102,7 +102,7 @@ export const Account: React.FC = () => {
             <div className="grid grid-cols-2 gap-3">
               {user?.badges.map((badge, idx) => (
                 <div key={idx} className="p-3 rounded-2xl bg-gray-50 border border-gray-200 text-center">
-                  <Flame className="w-6 h-6 mx-auto text-[#FF5A1F] mb-1" />
+                  <Flame className="w-6 h-6 mx-auto text-[#E60023] mb-1" />
                   <span className="text-[10px] font-bold text-black block uppercase tracking-wider">{badge.replace(/_/g, ' ')}</span>
                 </div>
               ))}

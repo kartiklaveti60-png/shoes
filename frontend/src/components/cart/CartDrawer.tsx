@@ -74,7 +74,7 @@ export const CartDrawer: React.FC = () => {
                 <Link
                   to="/shop"
                   onClick={closeCart}
-                  className="mt-4 inline-flex items-center gap-2 bg-black text-white px-6 py-3 rounded-full font-bold text-sm hover:bg-[#FF5A1F] transition-all shadow-md"
+                  className="mt-4 inline-flex items-center gap-2 bg-black text-white px-6 py-3 rounded-full font-bold text-sm hover:bg-[#E60023] transition-all shadow-md"
                 >
                   EXPLORE COLLECTIONS
                   <ArrowRight className="w-4 h-4" />
@@ -184,7 +184,7 @@ export const CartDrawer: React.FC = () => {
                 closeCart();
                 navigate('/checkout');
               }}
-              className="w-full bg-black text-white py-4 rounded-2xl font-bold tracking-wider text-sm hover:bg-[#FF5A1F] transition-all shadow-lg flex items-center justify-center gap-2 group"
+              className="w-full bg-black text-white py-4 rounded-2xl font-bold tracking-wider text-sm hover:bg-[#E60023] transition-all shadow-lg flex items-center justify-center gap-2 group"
             >
               PROCEED TO FAST CHECKOUT
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />

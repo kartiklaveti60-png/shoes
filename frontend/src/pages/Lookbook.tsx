@@ -8,7 +8,7 @@ export const Lookbook: React.FC = () => {
       
       {/* Title */}
       <div className="text-center max-w-3xl mx-auto space-y-3">
-        <span className="text-xs font-bold tracking-widest text-[#FF5A1F] uppercase">EDITORIAL SS26</span>
+        <span className="text-xs font-bold tracking-widest text-[#E60023] uppercase">EDITORIAL SS26</span>
         <h1 className="font-display text-5xl sm:text-7xl font-black uppercase text-black">THE METROPOLIS</h1>
         <p className="text-gray-600 text-sm font-medium">
           A visual exploration of modern geometry, urban architecture, and high-performance sneaker engineering.
@@ -25,12 +25,12 @@ export const Lookbook: React.FC = () => {
           />
         </div>
         <div className="md:col-span-5 space-y-4">
-          <span className="text-xs font-bold text-[#FF5A1F] uppercase">CHAPTER 01</span>
+          <span className="text-xs font-bold text-[#E60023] uppercase">CHAPTER 01</span>
           <h2 className="font-display text-3xl font-black uppercase text-black">NEO-TOKYO SILHOUETTES</h2>
           <p className="text-xs text-gray-600 leading-relaxed font-medium">
             Captured across late-night Shibuya crosswalks. The Cyber-X 01 reflects environmental light while maintaining absolute carbon fiber stability.
           </p>
-          <Link to="/shop" className="inline-flex items-center gap-2 text-xs font-bold text-black hover:text-[#FF5A1F]">
+          <Link to="/shop" className="inline-flex items-center gap-2 text-xs font-bold text-black hover:text-[#E60023]">
             SHOP THE LOOK <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
@@ -39,12 +39,12 @@ export const Lookbook: React.FC = () => {
       {/* Editorial Spread 2 */}
       <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
         <div className="md:col-span-5 space-y-4 order-2 md:order-1">
-          <span className="text-xs font-bold text-[#FF5A1F] uppercase">CHAPTER 02</span>
+          <span className="text-xs font-bold text-[#E60023] uppercase">CHAPTER 02</span>
           <h2 className="font-display text-3xl font-black uppercase text-black">QUANTUM ENDURANCE</h2>
           <p className="text-xs text-gray-600 leading-relaxed font-medium">
             Minimalist techwear meet marathon performance. Tested in sub-zero atmospheric chambers for ultimate durability.
           </p>
-          <Link to="/shop" className="inline-flex items-center gap-2 text-xs font-bold text-black hover:text-[#FF5A1F]">
+          <Link to="/shop" className="inline-flex items-center gap-2 text-xs font-bold text-black hover:text-[#E60023]">
             EXPLORE RUNNING VAULT <ArrowRight className="w-4 h-4" />
           </Link>
         </div>

@@ -18,7 +18,7 @@ export const AIStylistPage: React.FC = () => {
       outerwear: { item: "Reflective Modular Windshell Jacket", color: "Cyber Orange accents", brand: "SOLE LABS Studio" },
       accessories: ["Matte Titanium Carabiner Watch", "Minimalist Sling Bag"]
     },
-    colorPalette: ["#0A0A0A", "#1C1C1C", "#FF5A1F", "#E5E5E5"],
+    colorPalette: ["#0A0A0A", "#1C1C1C", "#E60023", "#E5E5E5"],
     stylistNote: "This outfit creates a high-contrast silhouette emphasizing the sole geometry while protecting against chilly urban climate."
   });
 
@@ -44,7 +44,7 @@ export const AIStylistPage: React.FC = () => {
       {/* Header */}
       <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">
         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black text-white text-xs font-bold uppercase">
-          <Sparkles className="w-4 h-4 text-[#FF5A1F]" /> AI STYLIST STUDIO
+          <Sparkles className="w-4 h-4 text-[#E60023]" /> AI STYLIST STUDIO
         </div>
         <h1 className="font-display text-4xl sm:text-6xl font-black uppercase text-black">OUTFIT GENERATOR</h1>
         <p className="text-gray-600 text-sm font-medium">
@@ -58,7 +58,7 @@ export const AIStylistPage: React.FC = () => {
         <div className="lg:col-span-5 glass-panel rounded-3xl p-6 sm:p-8 border border-black/10 space-y-6 bg-white shadow-sm">
           
           <h3 className="font-display font-bold text-lg text-black uppercase flex items-center gap-2">
-            <Shirt className="w-5 h-5 text-[#FF5A1F]" /> STYLING PARAMETERS
+            <Shirt className="w-5 h-5 text-[#E60023]" /> STYLING PARAMETERS
           </h3>
 
           {/* Sneaker Selection */}
@@ -119,7 +119,7 @@ export const AIStylistPage: React.FC = () => {
           <button
             onClick={handleGenerateOutfit}
             disabled={generating}
-            className="w-full bg-black text-white py-4 rounded-2xl font-bold text-sm hover:bg-[#FF5A1F] transition-all shadow-lg flex items-center justify-center gap-2"
+            className="w-full bg-black text-white py-4 rounded-2xl font-bold text-sm hover:bg-[#E60023] transition-all shadow-lg flex items-center justify-center gap-2"
           >
             {generating ? (
               <>
@@ -127,7 +127,7 @@ export const AIStylistPage: React.FC = () => {
               </>
             ) : (
               <>
-                <Sparkles className="w-4 h-4 text-[#FF5A1F]" /> GENERATE COMPLETE OUTFIT
+                <Sparkles className="w-4 h-4 text-[#E60023]" /> GENERATE COMPLETE OUTFIT
               </>
             )}
           </button>
@@ -155,7 +155,7 @@ export const AIStylistPage: React.FC = () => {
               
               <div className="p-4 rounded-2xl bg-gray-50 border border-gray-200 flex items-center justify-between">
                 <div>
-                  <span className="text-[10px] text-[#FF5A1F] font-bold uppercase tracking-wider block">FOOTWEAR ANCHOR</span>
+                  <span className="text-[10px] text-[#E60023] font-bold uppercase tracking-wider block">FOOTWEAR ANCHOR</span>
                   <h4 className="text-sm font-bold text-black">{selectedSneaker.name}</h4>
                   <p className="text-xs text-gray-500 font-medium">${selectedSneaker.price} • {selectedSneaker.brand}</p>
                 </div>

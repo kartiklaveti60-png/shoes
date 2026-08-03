@@ -30,10 +30,10 @@ export const Navbar: React.FC<{ onOpenSearch: () => void }> = ({ onOpenSearch })
         
         {/* Brand Logo */}
         <Link to="/" className="flex items-center gap-2 group">
-          <span className="font-display font-bold text-2xl tracking-tighter text-black group-hover:text-[#FF5A1F] transition-colors">
+          <span className="font-display font-bold text-2xl tracking-tighter text-black group-hover:text-[#E60023] transition-colors">
             SOLE
           </span>
-          <span className="w-2 h-2 rounded-full bg-[#FF5A1F] animate-pulse shadow-glow-orange" />
+          <span className="w-2 h-2 rounded-full bg-[#E60023] animate-pulse shadow-glow-red" />
         </Link>
 
         {/* Desktop Links */}
@@ -50,7 +50,7 @@ export const Navbar: React.FC<{ onOpenSearch: () => void }> = ({ onOpenSearch })
                   isActive ? 'text-black font-extrabold' : 'text-gray-600 hover:text-black'
                 }`}
               >
-                {Icon && <Icon className="w-4 h-4 text-[#FF5A1F]" />}
+                {Icon && <Icon className="w-4 h-4 text-[#E60023]" />}
                 {link.label}
                 {link.badge && (
                   <span className="text-[10px] bg-black text-white px-1.5 py-0.5 rounded-full font-bold uppercase tracking-wider">
@@ -99,7 +99,7 @@ export const Navbar: React.FC<{ onOpenSearch: () => void }> = ({ onOpenSearch })
           >
             <ShoppingBag className="w-5 h-5" />
             {cartCount > 0 && (
-              <span className="absolute top-1 right-1 w-4 h-4 rounded-full bg-[#FF5A1F] text-white text-[10px] font-bold flex items-center justify-center shadow-glow-orange">
+              <span className="absolute top-1 right-1 w-4 h-4 rounded-full bg-[#E60023] text-white text-[10px] font-bold flex items-center justify-center shadow-glow-red">
                 {cartCount}
               </span>
             )}
@@ -116,7 +116,7 @@ export const Navbar: React.FC<{ onOpenSearch: () => void }> = ({ onOpenSearch })
               className="w-6 h-6 rounded-full object-cover border border-black"
             />
             <span className="text-xs font-bold tracking-wider text-black flex items-center gap-1">
-              <ShieldCheck className="w-3.5 h-3.5 text-[#FF5A1F]" />
+              <ShieldCheck className="w-3.5 h-3.5 text-[#E60023]" />
               {user?.tier || 'TITAN'}
             </span>
           </Link>
@@ -150,7 +150,7 @@ export const Navbar: React.FC<{ onOpenSearch: () => void }> = ({ onOpenSearch })
               onClick={() => setMobileMenuOpen(false)}
               className="flex items-center gap-3 text-sm font-bold text-black"
             >
-              <User className="w-5 h-5 text-[#FF5A1F]" />
+              <User className="w-5 h-5 text-[#E60023]" />
               My Account ({user?.tier})
             </Link>
           </div>

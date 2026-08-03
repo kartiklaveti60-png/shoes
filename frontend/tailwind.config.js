@@ -12,7 +12,10 @@ export default {
         bgCard: '#F8F8F9',
         bgCardHover: '#F1F1F3',
         accent: '#000000',
-        cyberOrange: '#FF5A1F',
+        cyberOrange: '#E60023',
+        cyberRed: '#E60023',
+        chicagoRed: '#E60023',
+        chicagoRedDark: '#C8102E',
         cyberGold: '#EAB308',
         cyberSuccess: '#16A34A',
         cyberError: '#DC2626',
@@ -26,7 +29,8 @@ export default {
         display: ['Syncopate', 'sans-serif']
       },
       boxShadow: {
-        'glow-orange': '0 10px 30px -5px rgba(255, 90, 31, 0.3)',
+        'glow-orange': '0 10px 30px -5px rgba(230, 0, 35, 0.4)',
+        'glow-red': '0 10px 30px -5px rgba(230, 0, 35, 0.4)',
         'glow-black': '0 10px 30px -5px rgba(0, 0, 0, 0.2)',
         'glass-card': '0 10px 30px -10px rgba(0, 0, 0, 0.08)'
       },

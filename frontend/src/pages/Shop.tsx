@@ -62,7 +62,7 @@ export const Shop: React.FC = () => {
       {/* Header Title */}
       <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 pb-6 border-b border-black/10">
         <div>
-          <span className="text-xs font-bold tracking-widest text-[#FF5A1F] uppercase">THE CATALOGUE</span>
+          <span className="text-xs font-bold tracking-widest text-[#E60023] uppercase">THE CATALOGUE</span>
           <h1 className="font-display text-4xl sm:text-5xl font-black uppercase mt-1 text-black">SNEAKER VAULT</h1>
         </div>
         <p className="text-xs text-gray-500 mt-2 md:mt-0 font-bold">
@@ -142,7 +142,7 @@ export const Shop: React.FC = () => {
               setSelectedGender('All');
               setSearchQuery('');
             }}
-            className="mt-4 bg-black text-white px-6 py-2.5 rounded-full text-xs font-bold hover:bg-[#FF5A1F] transition-colors"
+            className="mt-4 bg-black text-white px-6 py-2.5 rounded-full text-xs font-bold hover:bg-[#E60023] transition-colors"
           >
             RESET ALL FILTERS
           </button>
@@ -187,12 +187,12 @@ export const Shop: React.FC = () => {
                   {/* Info */}
                   <div className="mt-4 space-y-1">
                     <div className="flex justify-between items-center text-xs">
-                      <span className="font-bold text-[#FF5A1F] uppercase tracking-widest">{product.brand}</span>
+                      <span className="font-bold text-[#E60023] uppercase tracking-widest">{product.brand}</span>
                       <span className="text-black font-extrabold">★ {product.rating}</span>
                     </div>
 
                     <Link to={`/product/${product.slug}`}>
-                      <h3 className="font-bold text-lg text-black group-hover:text-[#FF5A1F] transition-colors line-clamp-1">
+                      <h3 className="font-bold text-lg text-black group-hover:text-[#E60023] transition-colors line-clamp-1">
                         {product.name}
                       </h3>
                     </Link>
@@ -229,7 +229,7 @@ export const Shop: React.FC = () => {
                         color: product.colors[0]?.name || 'Standard',
                         quantity: 1
                       })}
-                      className="bg-black text-white p-2.5 rounded-xl hover:bg-[#FF5A1F] transition-all shadow-md"
+                      className="bg-black text-white p-2.5 rounded-xl hover:bg-[#E60023] transition-all shadow-md"
                       title="Add to Vault"
                     >
                       <ArrowRight className="w-4 h-4" />

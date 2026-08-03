@@ -167,7 +167,7 @@ export const Checkout: React.FC = () => {
           <button
             type="submit"
             disabled={processing || items.length === 0}
-            className="w-full bg-black text-white py-4 rounded-2xl font-bold text-sm hover:bg-[#FF5A1F] transition-all shadow-lg flex items-center justify-center gap-2"
+            className="w-full bg-black text-white py-4 rounded-2xl font-bold text-sm hover:bg-[#E60023] transition-all shadow-lg flex items-center justify-center gap-2"
           >
             {processing ? 'AUTHORIZING PAYMENT...' : `PAY $${total.toFixed(2)} NOW`}
             <ArrowRight className="w-4 h-4" />

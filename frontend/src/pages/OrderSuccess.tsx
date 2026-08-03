@@ -24,7 +24,7 @@ export const OrderSuccess: React.FC = () => {
         <CheckCircle2 className="w-16 h-16 text-green-600 mx-auto animate-bounce" />
         
         <div>
-          <span className="text-xs font-bold text-[#FF5A1F] uppercase tracking-widest">+150 VIP COLLECTOR XP EARNED!</span>
+          <span className="text-xs font-bold text-[#E60023] uppercase tracking-widest">+150 VIP COLLECTOR XP EARNED!</span>
           <h1 className="font-display text-3xl font-black uppercase text-black mt-1">ORDER CONFIRMED</h1>
           <p className="text-xs text-gray-600 mt-2 font-medium">
             Your tracking ID <strong className="text-black font-bold">#SOLE-984210</strong> has been generated and dispatched to your email.
@@ -45,7 +45,7 @@ export const OrderSuccess: React.FC = () => {
         <div className="flex flex-col sm:flex-row gap-3 pt-2">
           <Link
             to="/account"
-            className="flex-1 bg-black text-white py-3.5 rounded-2xl font-bold text-xs hover:bg-[#FF5A1F] transition-colors shadow-md"
+            className="flex-1 bg-black text-white py-3.5 rounded-2xl font-bold text-xs hover:bg-[#E60023] transition-colors shadow-md"
           >
             TRACK ORDER STATUS
           </Link>

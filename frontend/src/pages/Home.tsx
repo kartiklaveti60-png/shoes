@@ -51,14 +51,14 @@ export const Home: React.FC = () => {
           {/* Left Hero Text */}
           <div className="lg:col-span-6 space-y-6 text-left">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/5 border border-black/10 text-xs font-black tracking-widest text-black uppercase">
-              <Sparkles className="w-3.5 h-3.5 text-[#FF5A1F]" />
+              <Sparkles className="w-3.5 h-3.5 text-[#E60023]" />
               THE NEXT GENERATION OF FOOTWEAR
             </div>
 
             <h1 className="font-display text-5xl sm:text-7xl font-black tracking-tighter uppercase leading-[0.95] text-black">
-              WEAR THE <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-black via-gray-800 to-[#FF5A1F]">
-                FUTURE.
+              COP THE <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-black via-gray-800 to-[#E60023]">
+                LEGIT'S.
               </span>
             </h1>
 
@@ -69,7 +69,7 @@ export const Home: React.FC = () => {
             <div className="flex flex-wrap items-center gap-4 pt-2">
               <Link
                 to="/shop"
-                className="bg-black text-white px-8 py-4 rounded-full font-bold text-sm hover:bg-[#FF5A1F] transition-all shadow-lg flex items-center gap-2 group"
+                className="bg-black text-white px-8 py-4 rounded-full font-bold text-sm hover:bg-[#E60023] transition-all shadow-lg flex items-center gap-2 group"
               >
                 EXPLORE VAULT
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -79,7 +79,7 @@ export const Home: React.FC = () => {
                 to="/ai-stylist"
                 className="glass-panel text-black px-6 py-4 rounded-full font-bold text-sm hover:bg-black/5 transition-all flex items-center gap-2 border border-black/10"
               >
-                <Sparkles className="w-4 h-4 text-[#FF5A1F]" />
+                <Sparkles className="w-4 h-4 text-[#E60023]" />
                 LAUNCH AI STYLIST
               </Link>
             </div>
@@ -91,7 +91,7 @@ export const Home: React.FC = () => {
                 <p className="text-xs text-gray-500 mt-0.5 font-medium">Authentic Verified</p>
               </div>
               <div>
-                <span className="font-display font-black text-2xl text-[#FF5A1F]">85%</span>
+                <span className="font-display font-black text-2xl text-[#E60023]">85%</span>
                 <p className="text-xs text-gray-500 mt-0.5 font-medium">Energy Return</p>
               </div>
               <div>
@@ -105,7 +105,7 @@ export const Home: React.FC = () => {
           <div className="lg:col-span-6 relative">
             <div className="glass-panel rounded-3xl p-4 border border-black/10 relative overflow-hidden shadow-xl bg-white">
               <div className="absolute top-4 left-4 z-10 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-black border border-black/10 flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-[#FF5A1F] animate-ping" />
+                <span className="w-2 h-2 rounded-full bg-[#E60023] animate-ping" />
                 INTERACTIVE 3D MODEL
               </div>
 
@@ -130,12 +130,12 @@ export const Home: React.FC = () => {
         <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-10 pb-6 border-b border-black/10 gap-6">
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black text-white text-[11px] font-extrabold tracking-widest uppercase mb-3 shadow-md">
-              <Flame className="w-3.5 h-3.5 text-[#FF5A1F] animate-pulse" />
+              <Flame className="w-3.5 h-3.5 text-[#E60023] animate-pulse" />
               MOST WANTED SILHOUETTES
             </div>
             <h2 className="font-display text-4xl sm:text-6xl font-black uppercase tracking-tight text-black flex items-center gap-3">
               HYPED SNEAKERS
-              <span className="text-xs bg-[#FF5A1F] text-white font-extrabold px-3 py-1 rounded-full uppercase tracking-wider">
+              <span className="text-xs bg-[#E60023] text-white font-extrabold px-3 py-1 rounded-full uppercase tracking-wider">
                 LIVE MARKET
               </span>
             </h2>
@@ -147,7 +147,7 @@ export const Home: React.FC = () => {
           <div className="flex items-center gap-3">
             <Link 
               to="/shop?category=Hyped" 
-              className="text-xs font-extrabold text-black hover:text-[#FF5A1F] flex items-center gap-1.5 transition-colors uppercase tracking-wider px-5 py-3 rounded-full border border-black/20 hover:border-black bg-white"
+              className="text-xs font-extrabold text-black hover:text-[#E60023] flex items-center gap-1.5 transition-colors uppercase tracking-wider px-5 py-3 rounded-full border border-black/20 hover:border-black bg-white"
             >
               EXPLORE ALL HYPED VAULT <ArrowRight className="w-4 h-4" />
             </Link>
@@ -180,7 +180,7 @@ export const Home: React.FC = () => {
             <p className="text-gray-500 font-medium text-sm">No hyped sneakers currently listed under "{activeHypedTab}".</p>
             <button
               onClick={() => setActiveHypedTab('All')}
-              className="mt-4 bg-black text-white px-6 py-2 rounded-full text-xs font-bold hover:bg-[#FF5A1F]"
+              className="mt-4 bg-black text-white px-6 py-2 rounded-full text-xs font-bold hover:bg-[#E60023]"
             >
               SHOW ALL HYPED SNEAKERS
             </button>
@@ -199,8 +199,8 @@ export const Home: React.FC = () => {
                 >
                   {/* Top Hype Pulse Banner */}
                   <div className="flex items-center justify-between text-[10px] font-extrabold uppercase px-3 py-1.5 bg-gray-50 rounded-xl mb-3 border border-gray-100">
-                    <span className="flex items-center gap-1 text-[#FF5A1F]">
-                      <Flame className="w-3 h-3 fill-[#FF5A1F]" />
+                    <span className="flex items-center gap-1 text-[#E60023]">
+                      <Flame className="w-3 h-3 fill-[#E60023]" />
                       Hype Level: {hypeVal}%
                     </span>
                     <span className="flex items-center gap-1 text-gray-600">
@@ -234,7 +234,7 @@ export const Home: React.FC = () => {
                       {/* Badges */}
                       <div className="absolute top-3 left-3 flex flex-col gap-1">
                         {product.isHyped && (
-                          <span className="bg-[#FF5A1F] text-white text-[10px] font-black px-2.5 py-1 rounded-full uppercase tracking-wider shadow-sm flex items-center gap-1">
+                          <span className="bg-[#E60023] text-white text-[10px] font-black px-2.5 py-1 rounded-full uppercase tracking-wider shadow-sm flex items-center gap-1">
                             <Flame className="w-3 h-3 fill-white" /> HYPED
                           </span>
                         )}
@@ -249,12 +249,12 @@ export const Home: React.FC = () => {
                     {/* Info */}
                     <div className="mt-4 space-y-1">
                       <div className="flex justify-between items-center text-xs">
-                        <span className="text-[11px] font-black text-[#FF5A1F] uppercase tracking-widest">{product.brand}</span>
+                        <span className="text-[11px] font-black text-[#E60023] uppercase tracking-widest">{product.brand}</span>
                         <span className="text-black font-extrabold">★ {product.rating}</span>
                       </div>
 
                       <Link to={`/product/${product.slug}`} className="block">
-                        <h3 className="font-bold text-base text-black group-hover:text-[#FF5A1F] transition-colors line-clamp-1">
+                        <h3 className="font-bold text-base text-black group-hover:text-[#E60023] transition-colors line-clamp-1">
                           {product.name}
                         </h3>
                       </Link>
@@ -292,7 +292,7 @@ export const Home: React.FC = () => {
                           color: product.colors[0]?.name || 'Standard',
                           quantity: 1
                         })}
-                        className="bg-black hover:bg-[#FF5A1F] text-white p-2.5 rounded-xl transition-all shadow-md flex items-center justify-center"
+                        className="bg-black hover:bg-[#E60023] text-white p-2.5 rounded-xl transition-all shadow-md flex items-center justify-center"
                         title="Add to Vault"
                       >
                         <ArrowRight className="w-4 h-4" />
@@ -312,7 +312,7 @@ export const Home: React.FC = () => {
           
           <div className="lg:col-span-7 space-y-4">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black text-white text-xs font-bold uppercase">
-              <Flame className="w-3.5 h-3.5 text-[#FF5A1F]" />
+              <Flame className="w-3.5 h-3.5 text-[#E60023]" />
               NEXT HYPER-DROP INCOMING
             </div>
             <h2 className="font-display text-4xl sm:text-5xl font-black tracking-tight uppercase text-black">
@@ -347,7 +347,7 @@ export const Home: React.FC = () => {
                 placeholder="Enter your VIP email..."
                 className="w-full bg-gray-50 border border-gray-300 rounded-xl px-4 py-3 text-xs text-black placeholder-gray-500 focus:outline-none focus:border-black"
               />
-              <button className="w-full bg-black text-white py-3.5 rounded-xl font-bold text-xs hover:bg-[#FF5A1F] transition-all shadow-md">
+              <button className="w-full bg-black text-white py-3.5 rounded-xl font-bold text-xs hover:bg-[#E60023] transition-all shadow-md">
                 NOTIFY ME ON LAUNCH
               </button>
             </div>
@@ -359,7 +359,7 @@ export const Home: React.FC = () => {
       {/* ================= NIKE-KILLER AI FEATURES GRID ================= */}
       <section className="py-24 px-4 max-w-[1700px] mx-auto">
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
-          <span className="text-xs font-bold tracking-widest text-[#FF5A1F] uppercase">PROPRIETARY TECHNOLOGY</span>
+          <span className="text-xs font-bold tracking-widest text-[#E60023] uppercase">PROPRIETARY TECHNOLOGY</span>
           <h2 className="font-display text-3xl sm:text-5xl font-black uppercase text-black">
             BEYOND STANDARD SHOPPING
           </h2>
@@ -373,13 +373,13 @@ export const Home: React.FC = () => {
           {/* Card 1: AI Outfit Generator */}
           <div className="glass-panel rounded-3xl p-8 border border-black/10 hover:border-black transition-all group bg-white hover:shadow-xl">
             <div className="w-12 h-12 rounded-2xl bg-black text-white flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-              <Sparkles className="w-6 h-6 text-[#FF5A1F]" />
+              <Sparkles className="w-6 h-6 text-[#E60023]" />
             </div>
             <h3 className="font-display font-bold text-xl text-black mb-2">AI OUTFIT GENERATOR</h3>
             <p className="text-xs text-gray-600 leading-relaxed mb-6 font-medium">
               Upload or pick a sneaker, and our neural engine builds matching apparel layering based on weather, occasion, and color theory.
             </p>
-            <Link to="/ai-stylist" className="text-xs font-bold text-black hover:text-[#FF5A1F] flex items-center gap-1">
+            <Link to="/ai-stylist" className="text-xs font-bold text-black hover:text-[#E60023] flex items-center gap-1">
               TRY OUTFIT GENERATOR <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           </div>
@@ -387,13 +387,13 @@ export const Home: React.FC = () => {
           {/* Card 2: 3D Foot Scanner */}
           <div className="glass-panel rounded-3xl p-8 border border-black/10 hover:border-black transition-all group bg-white hover:shadow-xl">
             <div className="w-12 h-12 rounded-2xl bg-black text-white flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-              <ShieldCheck className="w-6 h-6 text-[#FF5A1F]" />
+              <ShieldCheck className="w-6 h-6 text-[#E60023]" />
             </div>
             <h3 className="font-display font-bold text-xl text-black mb-2">3D FOOT SCANNER</h3>
             <p className="text-xs text-gray-600 leading-relaxed mb-6 font-medium">
               Zero return sizing. Maps foot length and width down to the millimeter to guarantee 99.8% accurate US & EU shoe fitting.
             </p>
-            <Link to="/shop" className="text-xs font-bold text-black hover:text-[#FF5A1F] flex items-center gap-1">
+            <Link to="/shop" className="text-xs font-bold text-black hover:text-[#E60023] flex items-center gap-1">
               SCAN YOUR FIT <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           </div>
@@ -401,13 +401,13 @@ export const Home: React.FC = () => {
           {/* Card 3: Resell Value Index */}
           <div className="glass-panel rounded-3xl p-8 border border-black/10 hover:border-black transition-all group bg-white hover:shadow-xl">
             <div className="w-12 h-12 rounded-2xl bg-black text-white flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-              <Zap className="w-6 h-6 text-[#FF5A1F]" />
+              <Zap className="w-6 h-6 text-[#E60023]" />
             </div>
             <h3 className="font-display font-bold text-xl text-black mb-2">RESELL VALUE PREDICTOR</h3>
             <p className="text-xs text-gray-600 leading-relaxed mb-6 font-medium">
               Track investment potential for every sneaker pair in real-time. Know whether to hold, wear, or trade based on market analytics.
             </p>
-            <Link to="/account" className="text-xs font-bold text-black hover:text-[#FF5A1F] flex items-center gap-1">
+            <Link to="/account" className="text-xs font-bold text-black hover:text-[#E60023] flex items-center gap-1">
               VIEW TASTE GRAPH <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           </div>
@@ -419,7 +419,7 @@ export const Home: React.FC = () => {
       <section className="py-20 px-4 max-w-[1700px] mx-auto border-t border-black/10">
         <div className="flex justify-between items-end mb-12">
           <div>
-            <span className="text-xs font-bold tracking-widest text-[#FF5A1F] uppercase">COMMUNITY GALLERY</span>
+            <span className="text-xs font-bold tracking-widest text-[#E60023] uppercase">COMMUNITY GALLERY</span>
             <h2 className="font-display text-3xl sm:text-4xl font-black uppercase mt-1 text-black">ON-FOOT LOOKBOOK</h2>
           </div>
           <Link to="/community" className="text-sm font-bold text-gray-700 hover:text-black flex items-center gap-1">
@@ -438,7 +438,7 @@ export const Home: React.FC = () => {
               <img src={look.img} alt={look.user} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent p-4 flex flex-col justify-end">
                 <span className="text-xs font-bold text-white">{look.user}</span>
-                <span className="text-[11px] text-[#FF5A1F] font-semibold">❤️ {look.likes} Likes</span>
+                <span className="text-[11px] text-[#E60023] font-semibold">❤️ {look.likes} Likes</span>
               </div>
             </div>
           ))}

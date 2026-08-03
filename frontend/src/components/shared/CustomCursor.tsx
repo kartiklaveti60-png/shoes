@@ -55,7 +55,7 @@ export const CustomCursor: React.FC = () => {
           transform: `translate3d(${position.x}px, ${position.y}px, 0) translate(-50%, -50%)`
         }}
       >
-        <div className={`w-1.5 h-1.5 rounded-full ${isHovered ? 'bg-[#FF5A1F]' : 'bg-black'}`} />
+        <div className={`w-1.5 h-1.5 rounded-full ${isHovered ? 'bg-[#E60023]' : 'bg-black'}`} />
       </div>
     </>
   );

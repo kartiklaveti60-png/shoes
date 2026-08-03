@@ -83,7 +83,7 @@ export const ProductDetail: React.FC = () => {
           </div>
 
           {/* Thumbnails */}
-          <div className="grid grid-cols-4 gap-3">
+          <div className="grid grid-cols-5 gap-3">
             {product.images.map((img, idx) => (
               <button
                 key={idx}
@@ -107,7 +107,7 @@ export const ProductDetail: React.FC = () => {
           
           <div>
             <div className="flex items-center justify-between text-xs mb-1">
-              <span className="font-bold text-[#FF5A1F] uppercase tracking-widest">{product.brand}</span>
+              <span className="font-bold text-[#E60023] uppercase tracking-widest">{product.brand}</span>
               <span className="text-green-600 font-bold flex items-center gap-1">
                 <CheckCircle2 className="w-3.5 h-3.5" /> IN STOCK & READY TO SHIP
               </span>
@@ -150,7 +150,7 @@ export const ProductDetail: React.FC = () => {
           <div>
             <div className="flex items-center justify-between mb-2">
               <label className="text-xs font-bold text-gray-700 uppercase tracking-wider">
-                Select Size: <span className="text-[#FF5A1F]">{selectedSize}</span>
+                Select Size: <span className="text-[#E60023]">{selectedSize}</span>
               </label>
 
               {/* Foot Scanner Trigger */}
@@ -158,7 +158,7 @@ export const ProductDetail: React.FC = () => {
                 onClick={() => setScannerOpen(true)}
                 className="text-xs text-black font-bold flex items-center gap-1 hover:underline"
               >
-                <Scan className="w-3.5 h-3.5 text-[#FF5A1F]" /> AI SIZE SCANNER
+                <Scan className="w-3.5 h-3.5 text-[#E60023]" /> AI SIZE SCANNER
               </button>
             </div>
 
@@ -193,7 +193,7 @@ export const ProductDetail: React.FC = () => {
                 color: selectedColor,
                 quantity: 1
               })}
-              className="flex-1 bg-black text-white py-4 rounded-2xl font-bold text-sm hover:bg-[#FF5A1F] transition-all shadow-lg flex items-center justify-center gap-2"
+              className="flex-1 bg-black text-white py-4 rounded-2xl font-bold text-sm hover:bg-[#E60023] transition-all shadow-lg flex items-center justify-center gap-2"
             >
               ADD TO VAULT (${product.price})
               <ArrowRight className="w-4 h-4" />
@@ -212,7 +212,7 @@ export const ProductDetail: React.FC = () => {
           {/* Technology & Materials Card */}
           <div className="bg-gray-50 p-5 rounded-2xl border border-gray-200 space-y-3">
             <h4 className="font-bold text-xs text-black uppercase tracking-wider flex items-center gap-1.5">
-              <Zap className="w-4 h-4 text-[#FF5A1F]" /> PROPRIETARY ARCHITECTURE
+              <Zap className="w-4 h-4 text-[#E60023]" /> PROPRIETARY ARCHITECTURE
             </h4>
             
             <div className="flex flex-wrap gap-1.5">
@@ -237,7 +237,7 @@ export const ProductDetail: React.FC = () => {
       <section className="mt-20 pt-12 border-t border-gray-200 space-y-8">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div>
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FF5A1F]/10 text-[#FF5A1F] text-xs font-bold uppercase mb-2">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#E60023]/10 text-[#E60023] text-xs font-bold uppercase mb-2">
               <Sparkles className="w-3.5 h-3.5" /> ARCHIVAL CERTIFICATION & DETAILS
             </div>
             <h2 className="font-display text-2xl sm:text-3xl font-black text-black uppercase">
@@ -282,7 +282,7 @@ export const ProductDetail: React.FC = () => {
                 </div>
                 <div className="pt-4 flex items-center justify-between">
                   <span className="text-xs font-bold text-black uppercase tracking-tight">{caption}</span>
-                  <span className="text-[10px] font-extrabold text-[#FF5A1F] uppercase group-hover:underline flex items-center gap-0.5">
+                  <span className="text-[10px] font-extrabold text-[#E60023] uppercase group-hover:underline flex items-center gap-0.5">
                     VIEW <ArrowRight className="w-3 h-3" />
                   </span>
                 </div>

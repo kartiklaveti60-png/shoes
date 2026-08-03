@@ -11,7 +11,7 @@ export const Footer: React.FC = () => {
         <div className="md:col-span-5 space-y-4">
           <Link to="/" className="flex items-center gap-2">
             <span className="font-display font-bold text-3xl tracking-tighter text-black">SOLE</span>
-            <span className="w-2.5 h-2.5 rounded-full bg-[#FF5A1F] animate-pulse" />
+            <span className="w-2.5 h-2.5 rounded-full bg-[#E60023] animate-pulse" />
           </Link>
 
           <p className="text-xs text-gray-600 max-w-sm leading-relaxed font-medium">
@@ -57,7 +57,7 @@ export const Footer: React.FC = () => {
               placeholder="Your email address..."
               className="w-full bg-white border border-gray-300 rounded-xl px-3.5 py-2.5 text-xs text-black placeholder-gray-500 focus:outline-none focus:border-black font-semibold"
             />
-            <button className="absolute right-1 top-1 bottom-1 bg-black px-3 rounded-lg text-white hover:bg-[#FF5A1F] transition-colors">
+            <button className="absolute right-1 top-1 bottom-1 bg-black px-3 rounded-lg text-white hover:bg-[#E60023] transition-colors">
               <ArrowRight className="w-3.5 h-3.5" />
             </button>
           </div>

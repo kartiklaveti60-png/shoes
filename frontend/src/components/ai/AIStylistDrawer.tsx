@@ -57,9 +57,9 @@ export const AIStylistDrawer: React.FC = () => {
       {/* Floating Trigger Button */}
       <button
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-6 right-6 z-40 bg-black text-white px-4 py-3 rounded-full font-bold text-xs shadow-xl flex items-center gap-2 hover:bg-[#FF5A1F] transition-all transform hover:scale-105"
+        className="fixed bottom-6 right-6 z-40 bg-black text-white px-4 py-3 rounded-full font-bold text-xs shadow-xl flex items-center gap-2 hover:bg-[#E60023] transition-all transform hover:scale-105"
       >
-        <Sparkles className="w-4 h-4 text-[#FF5A1F] animate-spin-slow" />
+        <Sparkles className="w-4 h-4 text-[#E60023] animate-spin-slow" />
         AI STYLIST
       </button>
 
@@ -120,7 +120,7 @@ export const AIStylistDrawer: React.FC = () => {
             ))}
             {loading && (
               <div className="text-[11px] text-gray-500 italic flex items-center gap-2">
-                <Sparkles className="w-3.5 h-3.5 animate-spin text-[#FF5A1F]" />
+                <Sparkles className="w-3.5 h-3.5 animate-spin text-[#E60023]" />
                 Architect is reflecting...
               </div>
             )}
@@ -143,7 +143,7 @@ export const AIStylistDrawer: React.FC = () => {
             />
             <button
               type="submit"
-              className="bg-black text-white p-2 rounded-xl hover:bg-[#FF5A1F] transition-colors"
+              className="bg-black text-white p-2 rounded-xl hover:bg-[#E60023] transition-colors"
             >
               <Send className="w-4 h-4" />
             </button>
