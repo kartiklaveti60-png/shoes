@@ -96,8 +96,11 @@ export const AISearchModal: React.FC<{ isOpen: boolean; onClose: () => void }> =
             {aiSuggestions.map((prompt, idx) => (
               <button
                 key={idx}
-                onClick={() => setQuery(prompt)}
-                className="text-xs bg-gray-100 hover:bg-black hover:text-white text-gray-700 px-3 py-1.5 rounded-full border border-gray-200 transition-all text-left"
+                onClick={() => {
+                  onClose();
+                  navigate(`/shop?search=${encodeURIComponent(prompt)}`);
+                }}
+                className="text-xs bg-gray-100 hover:bg-black hover:text-white text-gray-700 px-3 py-1.5 rounded-full border border-gray-200 transition-all text-left font-medium"
               >
                 ✦ {prompt}
               </button>

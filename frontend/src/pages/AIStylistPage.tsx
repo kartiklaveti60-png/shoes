@@ -39,7 +39,7 @@ export const AIStylistPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white text-black pt-28 pb-20 px-4 max-w-7xl mx-auto">
+    <div className="w-full min-h-screen bg-white text-black pt-28 pb-20 px-6 md:px-12 lg:px-16 max-w-[1920px] mx-auto">
       
       {/* Header */}
       <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">

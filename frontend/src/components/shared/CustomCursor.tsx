@@ -3,12 +3,16 @@ import React, { useEffect, useState } from 'react';
 export const CustomCursor: React.FC = () => {
   const [position, setPosition] = useState({ x: -100, y: -100 });
   const [isHovered, setIsHovered] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    document.body.classList.add('custom-cursor-active');
-
     const handleMouseMove = (e: MouseEvent) => {
       setPosition({ x: e.clientX, y: e.clientY });
+      if (!isVisible) setIsVisible(true);
+    };
+
+    const handleMouseLeave = () => {
+      setIsVisible(false);
     };
 
     const handleMouseOver = (e: MouseEvent) => {
@@ -18,6 +22,7 @@ export const CustomCursor: React.FC = () => {
         target.tagName === 'A' ||
         target.closest('button') ||
         target.closest('a') ||
+        target.getAttribute('role') === 'button' ||
         target.dataset.cursor === 'pointer'
       ) {
         setIsHovered(true);
@@ -27,36 +32,33 @@ export const CustomCursor: React.FC = () => {
     };
 
     window.addEventListener('mousemove', handleMouseMove);
+    document.addEventListener('mouseleave', handleMouseLeave);
     window.addEventListener('mouseover', handleMouseOver);
 
     return () => {
-      document.body.classList.remove('custom-cursor-active');
       window.removeEventListener('mousemove', handleMouseMove);
+      document.removeEventListener('mouseleave', handleMouseLeave);
       window.removeEventListener('mouseover', handleMouseOver);
     };
-  }, []);
+  }, [isVisible]);
+
+  if (!isVisible) return null;
 
   return (
-    <>
-      {/* Outer Glow Ring */}
+    <div
+      className="fixed top-0 left-0 pointer-events-none z-[9999] transition-transform duration-75 ease-out"
+      style={{
+        transform: `translate3d(${position.x}px, ${position.y}px, 0) translate(-50%, -50%)`
+      }}
+    >
+      {/* Sleek Minimalist Ring Halo */}
       <div
-        className="fixed top-0 left-0 pointer-events-none z-[9999] transition-transform duration-300 ease-out"
-        style={{
-          transform: `translate3d(${position.x}px, ${position.y}px, 0) translate(-50%, -50%) scale(${isHovered ? 2.2 : 1})`
-        }}
-      >
-        <div className={`w-8 h-8 rounded-full border ${isHovered ? 'border-[#000000] bg-[#000000]/10 shadow-glow-black' : 'border-black/30'} backdrop-blur-[2px] transition-all duration-300`} />
-      </div>
-
-      {/* Inner Dot */}
-      <div
-        className="fixed top-0 left-0 pointer-events-none z-[9999]"
-        style={{
-          transform: `translate3d(${position.x}px, ${position.y}px, 0) translate(-50%, -50%)`
-        }}
-      >
-        <div className={`w-1.5 h-1.5 rounded-full ${isHovered ? 'bg-[#E60023]' : 'bg-black'}`} />
-      </div>
-    </>
+        className={`rounded-full transition-all duration-200 border ${
+          isHovered
+            ? 'w-10 h-10 border-black bg-black/5 scale-110 shadow-sm'
+            : 'w-6 h-6 border-black/30 bg-transparent'
+        }`}
+      />
+    </div>
   );
 };

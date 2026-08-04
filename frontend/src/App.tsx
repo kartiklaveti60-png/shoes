@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { CustomCursor } from './components/shared/CustomCursor';
 import { SmoothScroll } from './components/shared/SmoothScroll';
+import { ScrollToTop } from './components/shared/ScrollToTop';
+import { IntroLoader } from './components/shared/IntroLoader';
 import { Navbar } from './components/layout/Navbar';
 import { Footer } from './components/layout/Footer';
 import { CartDrawer } from './components/cart/CartDrawer';
@@ -12,20 +14,28 @@ import { Home } from './pages/Home';
 import { Shop } from './pages/Shop';
 import { ProductDetail } from './pages/ProductDetail';
 import { Drops } from './pages/Drops';
-import { AIStylistPage } from './pages/AIStylistPage';
 import { Community } from './pages/Community';
 import { Account } from './pages/Account';
 import { Checkout } from './pages/Checkout';
 import { OrderSuccess } from './pages/OrderSuccess';
 import { Lookbook } from './pages/Lookbook';
+import { Wishlist } from './pages/Wishlist';
+import { ResellPredictorPage } from './pages/ResellPredictorPage';
+import { ContactPage } from './pages/ContactPage';
 
 export const App: React.FC = () => {
   const [searchOpen, setSearchOpen] = useState(false);
+  const [showIntro, setShowIntro] = useState(true);
 
   return (
     <Router>
+      <ScrollToTop />
       <SmoothScroll>
         <div className="relative min-h-screen bg-[#0A0A0A] text-white antialiased">
+          
+          {/* Luxury 3.5s Website Intro Animation */}
+          {showIntro && <IntroLoader onComplete={() => setShowIntro(false)} />}
+
           
           {/* Custom Luxury Magnetic Cursor */}
           <CustomCursor />
@@ -50,10 +60,11 @@ export const App: React.FC = () => {
               <Route path="/product/:slug" element={<ProductDetail />} />
               <Route path="/shop/:slug" element={<ProductDetail />} />
               <Route path="/drops" element={<Drops />} />
-              <Route path="/ai-stylist" element={<AIStylistPage />} />
+              <Route path="/resell-predictor" element={<ResellPredictorPage />} />
+              <Route path="/contact" element={<ContactPage />} />
               <Route path="/community" element={<Community />} />
               <Route path="/account" element={<Account />} />
-              <Route path="/wishlist" element={<Shop />} />
+              <Route path="/wishlist" element={<Wishlist />} />
               <Route path="/checkout" element={<Checkout />} />
               <Route path="/order-success" element={<OrderSuccess />} />
               <Route path="/lookbook" element={<Lookbook />} />

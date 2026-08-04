@@ -19,26 +19,15 @@ export const Drops: React.FC = () => {
       status: 'UPCOMING'
     },
     {
-      id: 'drop_2',
-      title: "AEROSPACE QUANTUM RUNNER 'SOLAR'",
-      date: 'AUG 12, 2026 • 12:00 EST',
-      retailPrice: 280,
-      resellEst: 420,
-      tierRequired: 'ALL MEMBERS',
-      edition: '2,500 Pairs Worldwide',
-      image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&q=80&w=1200',
+      id: 'drop_lv_af1',
+      title: "Louis Vuitton x Nike Air Force 01",
+      date: 'AUG 18, 2026 • 12:00 EST',
+      retailPrice: 2750,
+      resellEst: 325800,
+      tierRequired: 'TITAN & LEGEND VIP',
+      edition: '200 Pairs Worldwide',
+      image: '/images/louis-vuitton-nike-air-force-1.png',
       status: 'UPCOMING'
-    },
-    {
-      id: 'drop_3',
-      title: "JORDAN MONOLITH RETRO HIGH 'OBSIDIAN'",
-      date: 'AUG 20, 2026 • 15:00 EST',
-      retailPrice: 450,
-      resellEst: 950,
-      tierRequired: 'LEGEND ONLY',
-      edition: '500 Numbered Units',
-      image: 'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&q=80&w=1200',
-      status: 'LOCKED'
     }
   ];
 
@@ -49,7 +38,7 @@ export const Drops: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white text-black pt-28 pb-20 px-4 max-w-7xl mx-auto">
+    <div className="w-full min-h-screen bg-white text-black pt-28 pb-20 px-6 md:px-12 lg:px-16 max-w-[1800px] mx-auto">
       
       {/* Title */}
       <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
@@ -93,11 +82,11 @@ export const Drops: React.FC = () => {
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-2">
                   <div>
                     <span className="text-[11px] text-gray-500 block font-bold">RETAIL PRICE</span>
-                    <span className="font-display font-black text-xl text-black">${drop.retailPrice}</span>
+                    <span className="font-display font-black text-xl text-black">${drop.retailPrice.toLocaleString()}</span>
                   </div>
                   <div>
                     <span className="text-[11px] text-gray-500 block font-bold">EST. RESELL VALUE</span>
-                    <span className="font-display font-black text-xl text-green-600">${drop.resellEst}</span>
+                    <span className="font-display font-black text-xl text-green-600">${drop.resellEst.toLocaleString()}</span>
                   </div>
                   <div>
                     <span className="text-[11px] text-gray-500 block font-bold">ALLOCATION</span>

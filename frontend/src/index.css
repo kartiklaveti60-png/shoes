@@ -51,15 +51,7 @@
   box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.1);
 }
 
-/* Custom Cursor Hide Native */
-@media (pointer: fine) {
-  body.custom-cursor-active {
-    cursor: none;
-  }
-  body.custom-cursor-active a, 
-  body.custom-cursor-active button,
-  body.custom-cursor-active input,
-  body.custom-cursor-active select {
-    cursor: none;
-  }
+/* Clean & Responsive Cursor Styling */
+a, button, input, select, [role="button"] {
+  cursor: pointer;
 }

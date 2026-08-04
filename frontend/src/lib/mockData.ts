@@ -52,9 +52,9 @@ export const MOCK_PRODUCTS: Product[] = [
     brand: "JORDAN",
     category: "Hyped",
     gender: "Unisex",
-    price: 300,
-    originalPrice: 350,
-    resellEstimate: 480,
+    price: 180,
+    originalPrice: 180,
+    resellEstimate: 300,
     isDrop: true,
     isFeatured: true,
     isTrending: true,
@@ -668,11 +668,24 @@ export const MOCK_PRODUCTS: Product[] = [
     carbonFootprintKg: 4.1,
     comfortRating: 9.4,
     images: [
-      "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&q=80&w=1200",
-      "https://images.unsplash.com/photo-1600269452121-4f2416e55c28?auto=format&fit=crop&q=80&w=1200"
+      "/images/nike-air-force-01.png",
+      "/images/nike-air-force-01-pair.png",
+      "/images/nike-air-force-01-side.png",
+      "/images/nike-air-force-01-heel.png",
+      "/images/nike-air-force-01-onfoot.jpg"
     ],
     colors: [
-      { name: "Triple White", hex: "#FFFFFF", images: ["https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&q=80&w=1200"] }
+      {
+        name: "Triple White",
+        hex: "#FFFFFF",
+        images: [
+          "/images/nike-air-force-01.png",
+          "/images/nike-air-force-01-pair.png",
+          "/images/nike-air-force-01-side.png",
+          "/images/nike-air-force-01-heel.png",
+          "/images/nike-air-force-01-onfoot.jpg"
+        ]
+      }
     ],
     sizes: [
       { size: "US 8", stock: 15 },
@@ -707,11 +720,24 @@ export const MOCK_PRODUCTS: Product[] = [
     carbonFootprintKg: 3.9,
     comfortRating: 9.2,
     images: [
-      "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&q=80&w=1200",
-      "https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&q=80&w=1200"
+      "/images/nike-dunk-low-panda.png",
+      "/images/nike-dunk-low-panda-pair.jpg",
+      "/images/nike-dunk-low-panda-heel.jpg",
+      "/images/nike-dunk-low-panda-rear.jpg",
+      "/images/nike-dunk-low-panda-onfoot.jpg"
     ],
     colors: [
-      { name: "White / Black (Panda)", hex: "#000000", images: ["https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&q=80&w=1200"] }
+      {
+        name: "White / Black (Panda)",
+        hex: "#000000",
+        images: [
+          "/images/nike-dunk-low-panda.png",
+          "/images/nike-dunk-low-panda-pair.jpg",
+          "/images/nike-dunk-low-panda-heel.jpg",
+          "/images/nike-dunk-low-panda-rear.jpg",
+          "/images/nike-dunk-low-panda-onfoot.jpg"
+        ]
+      }
     ],
     sizes: [
       { size: "US 8.5", stock: 12 },
@@ -746,11 +772,26 @@ export const MOCK_PRODUCTS: Product[] = [
     carbonFootprintKg: 3.7,
     comfortRating: 9.3,
     images: [
-      "https://images.unsplash.com/photo-1608231387042-66d1773070a5?auto=format&fit=crop&q=80&w=1200",
-      "https://images.unsplash.com/photo-1600269452121-4f2416e55c28?auto=format&fit=crop&q=80&w=1200"
+      "/images/adidas-samba.png",
+      "/images/adidas-samba-side.jpg",
+      "/images/adidas-samba-toe.jpg",
+      "/images/adidas-samba-heel.jpg",
+      "/images/adidas-samba-top.jpg",
+      "/images/adidas-samba-onfoot.jpg"
     ],
     colors: [
-      { name: "Cloud White / Core Black / Gum", hex: "#FFFFFF", images: ["https://images.unsplash.com/photo-1608231387042-66d1773070a5?auto=format&fit=crop&q=80&w=1200"] }
+      {
+        name: "Cloud White / Core Black / Gum",
+        hex: "#FFFFFF",
+        images: [
+          "/images/adidas-samba.png",
+          "/images/adidas-samba-side.jpg",
+          "/images/adidas-samba-toe.jpg",
+          "/images/adidas-samba-heel.jpg",
+          "/images/adidas-samba-top.jpg",
+          "/images/adidas-samba-onfoot.jpg"
+        ]
+      }
     ],
     sizes: [
       { size: "US 7.5", stock: 10 },
@@ -785,10 +826,24 @@ export const MOCK_PRODUCTS: Product[] = [
     carbonFootprintKg: 3.8,
     comfortRating: 9.4,
     images: [
-      "/images/adidas-all-star.png"
+      "/images/adidas-all-star.png",
+      "/images/adidas-all-star-quarter.jpg",
+      "/images/adidas-all-star-pair.jpg",
+      "/images/adidas-all-star-heel.jpg",
+      "/images/adidas-all-star-toe.jpg"
     ],
     colors: [
-      { name: "Cloud White / Core Black", hex: "#FFFFFF", images: ["/images/adidas-all-star.png"] }
+      {
+        name: "Cloud White / Core Black",
+        hex: "#FFFFFF",
+        images: [
+          "/images/adidas-all-star.png",
+          "/images/adidas-all-star-quarter.jpg",
+          "/images/adidas-all-star-pair.jpg",
+          "/images/adidas-all-star-heel.jpg",
+          "/images/adidas-all-star-toe.jpg"
+        ]
+      }
     ],
     sizes: [
       { size: "US 8", stock: 12 },

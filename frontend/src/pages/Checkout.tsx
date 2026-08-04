@@ -34,7 +34,7 @@ export const Checkout: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white text-black pt-28 pb-20 px-4 max-w-7xl mx-auto">
+    <div className="w-full min-h-screen bg-white text-black pt-28 pb-20 px-6 md:px-12 lg:px-16 max-w-[1920px] mx-auto">
       
       <div className="text-center max-w-2xl mx-auto mb-12">
         <h1 className="font-display text-3xl sm:text-4xl font-black uppercase text-black">EXPRESS FAST CHECKOUT</h1>

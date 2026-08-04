@@ -16,25 +16,33 @@ export const Navbar: React.FC<{ onOpenSearch: () => void }> = ({ onOpenSearch })
   const cartCount = items.reduce((sum, i) => sum + i.quantity, 0);
   const wishlistCount = wishlistIds.length;
 
-  const navLinks = [
+  const navLinks: Array<{ label: string; path: string; badge?: string; icon?: React.ElementType }> = [
     { label: 'Shop', path: '/shop' },
     { label: 'Drops', path: '/drops', badge: 'HOT' },
-    { label: 'AI Stylist', path: '/ai-stylist', icon: Sparkles },
+    { label: 'Resell Predictor', path: '/resell-predictor', badge: 'AI' },
     { label: 'Community', path: '/community' },
     { label: 'Lookbook', path: '/lookbook' }
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 px-4 md:px-8 lg:px-12 py-4 transition-all duration-300">
-      <nav className="max-w-[1700px] w-full mx-auto glass-panel rounded-full px-6 py-3.5 flex items-center justify-between border border-black/10 shadow-lg">
+    <header className="fixed top-0 left-0 right-0 z-50 px-4 md:px-6 lg:px-8 py-4 transition-all duration-300">
+      <nav className="max-w-[1920px] w-full mx-auto glass-panel rounded-full px-6 py-3.5 flex items-center justify-between border border-black/10 shadow-lg">
         
         {/* Brand Logo */}
-        <Link to="/" className="flex items-center gap-2 group">
+        <a 
+          href="/" 
+          onClick={(e) => {
+            e.preventDefault();
+            window.location.href = '/';
+          }}
+          className="flex items-center gap-2 group cursor-pointer select-none"
+          title="Return to Home Page"
+        >
           <span className="font-display font-bold text-2xl tracking-tighter text-black group-hover:text-[#E60023] transition-colors">
             SOLE
           </span>
           <span className="w-2 h-2 rounded-full bg-[#E60023] animate-pulse shadow-glow-red" />
-        </Link>
+        </a>
 
         {/* Desktop Links */}
         <div className="hidden md:flex items-center gap-8">

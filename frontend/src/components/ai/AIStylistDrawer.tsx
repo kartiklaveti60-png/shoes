@@ -1,156 +1,68 @@
-import React, { useState } from 'react';
-import { Sparkles, X, Send, Bot, User, ArrowRight } from 'lucide-react';
-import axios from 'axios';
-
-interface Message {
-  id: string;
-  sender: 'ai' | 'user';
-  text: string;
-  suggestedActions?: string[];
-}
+import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 export const AIStylistDrawer: React.FC = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [input, setInput] = useState('');
-  const [loading, setLoading] = useState(false);
-  const [messages, setMessages] = useState<Message[]>([
-    {
-      id: '1',
-      sender: 'ai',
-      text: "Greetings. I am your personal SOLE AI Fashion Architect. Ask me anything about sneaker sizing, outfit color matching, or resell projections.",
-      suggestedActions: ["Style me for Friday night", "Which sneaker holds highest resell?", "How does Air Jordan 1 fit?"]
-    }
-  ]);
-
-  const handleSendMessage = async (textToSend?: string) => {
-    const queryText = textToSend || input;
-    if (!queryText.trim()) return;
-
-    const userMsg: Message = { id: Date.now().toString(), sender: 'user', text: queryText };
-    setMessages((prev) => [...prev, userMsg]);
-    if (!textToSend) setInput('');
-    setLoading(true);
-
-    try {
-      const res = await axios.post('/api/v1/ai/stylist-chat', { message: queryText });
-      const aiMsg: Message = {
-        id: (Date.now() + 1).toString(),
-        sender: 'ai',
-        text: res.data.message || "I recommend pairing minimalist black cargo trousers with our nitrogen-infused runner for optimal modern proportions.",
-        suggestedActions: res.data.suggestedActions
-      };
-      setMessages((prev) => [...prev, aiMsg]);
-    } catch (err) {
-      const fallbackMsg: Message = {
-        id: (Date.now() + 1).toString(),
-        sender: 'ai',
-        text: "For a sleek street look, pair high-contrast sneakers with relaxed black techwear pants and an oversized hoodie."
-      };
-      setMessages((prev) => [...prev, fallbackMsg]);
-    } finally {
-      setLoading(false);
-    }
-  };
+  const navigate = useNavigate();
+  const instagramUrl = "https://instagram.com";
+  const whatsappUrl = "https://wa.me/15550192834?text=Hello%20SOLE%20Team!%20I%20have%20an%20inquiry%20about%20a%20sneaker.";
 
   return (
-    <>
-      {/* Floating Trigger Button */}
-      <button
-        onClick={() => setIsOpen(true)}
-        className="fixed bottom-6 right-6 z-40 bg-black text-white px-4 py-3 rounded-full font-bold text-xs shadow-xl flex items-center gap-2 hover:bg-[#E60023] transition-all transform hover:scale-105"
-      >
-        <Sparkles className="w-4 h-4 text-[#E60023] animate-spin-slow" />
-        AI STYLIST
-      </button>
+    <div className="fixed bottom-6 right-6 z-50">
+      {/* Invisible Glass Type Animation Container */}
+      <div className="relative group">
+        
+        {/* Ambient Glowing Reflection Backdrop */}
+        <div className="absolute -inset-1 bg-gradient-to-r from-red-500/30 via-white/40 to-red-500/30 rounded-full blur-md opacity-70 group-hover:opacity-100 transition duration-500 animate-pulse" />
 
-      {/* Drawer Panel */}
-      {isOpen && (
-        <div className="fixed bottom-6 right-6 z-50 w-full max-w-sm bg-white border border-black/10 rounded-3xl shadow-2xl overflow-hidden flex flex-col h-[520px] text-black animate-in slide-in-from-bottom-5">
+        {/* Glassmorphic Floating Button */}
+        <div className="relative bg-black/60 hover:bg-black/80 backdrop-blur-2xl text-white px-5 py-3 rounded-full font-extrabold text-xs shadow-2xl flex items-center gap-3 border border-white/20 hover:border-white/50 transition-all duration-300 transform hover:scale-105">
           
-          {/* Header */}
-          <div className="bg-gray-50 p-4 border-b border-black/10 flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <Bot className="w-5 h-5 text-black" />
-              <div>
-                <h4 className="font-display font-bold text-sm text-black">SOLE AI ARCHITECT</h4>
-                <p className="text-[10px] text-green-600 font-semibold">● ACTIVE ASSISTANT</p>
-              </div>
-            </div>
-            <button onClick={() => setIsOpen(false)} className="text-gray-500 hover:text-black p-1">
-              <X className="w-5 h-5" />
-            </button>
-          </div>
-
-          {/* Messages Body */}
-          <div className="flex-1 p-4 overflow-y-auto space-y-3">
-            {messages.map((msg) => (
-              <div
-                key={msg.id}
-                className={`flex gap-2 text-xs ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}
-              >
-                {msg.sender === 'ai' && (
-                  <div className="w-6 h-6 rounded-full bg-black text-white flex items-center justify-center shrink-0">
-                    <Bot className="w-3.5 h-3.5" />
-                  </div>
-                )}
-                
-                <div className={`max-w-[80%] rounded-2xl p-3 ${
-                  msg.sender === 'user' 
-                    ? 'bg-black text-white font-medium' 
-                    : 'bg-gray-50 text-gray-900 border border-gray-200'
-                }`}>
-                  <p>{msg.text}</p>
-                  
-                  {/* Suggested Chips */}
-                  {msg.suggestedActions && (
-                    <div className="mt-3 flex flex-wrap gap-1.5 pt-2 border-t border-gray-200">
-                      {msg.suggestedActions.map((action, i) => (
-                        <button
-                          key={i}
-                          onClick={() => handleSendMessage(action)}
-                          className="bg-white hover:bg-black text-[10px] text-gray-700 hover:text-white px-2 py-1 rounded-full border border-gray-300 transition-colors flex items-center gap-1"
-                        >
-                          {action} <ArrowRight className="w-2.5 h-2.5" />
-                        </button>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              </div>
-            ))}
-            {loading && (
-              <div className="text-[11px] text-gray-500 italic flex items-center gap-2">
-                <Sparkles className="w-3.5 h-3.5 animate-spin text-[#E60023]" />
-                Architect is reflecting...
-              </div>
-            )}
-          </div>
-
-          {/* Input Bar */}
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              handleSendMessage();
-            }}
-            className="p-3 border-t border-black/10 bg-gray-50 flex gap-2"
+          {/* Contact Us Webpage Button Trigger */}
+          <button
+            onClick={() => navigate('/contact')}
+            className="flex items-center gap-2 text-white hover:text-[#E60023] transition-colors focus:outline-none cursor-pointer"
+            title="Open Contact Us Webpage"
           >
-            <input
-              type="text"
-              placeholder="Ask AI Stylist..."
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              className="flex-1 bg-white border border-gray-300 rounded-xl px-3 py-2 text-xs text-black placeholder-gray-500 focus:outline-none focus:border-black"
-            />
-            <button
-              type="submit"
-              className="bg-black text-white p-2 rounded-xl hover:bg-[#E60023] transition-colors"
-            >
-              <Send className="w-4 h-4" />
-            </button>
-          </form>
+            <span className="relative flex h-2.5 w-2.5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#E60023] opacity-75" />
+              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#E60023]" />
+            </span>
+            <span className="uppercase tracking-widest font-black text-xs text-white group-hover:text-white transition-colors">
+              CONTACT US
+            </span>
+          </button>
+
+          <div className="h-4 w-px bg-white/30 mx-0.5" />
+
+          {/* Instagram Icon Link */}
+          <a
+            href={instagramUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-white/80 hover:text-[#E1306C] hover:scale-125 transition-all p-1"
+            title="Contact us on Instagram"
+          >
+            <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+            </svg>
+          </a>
+
+          {/* WhatsApp Icon Link */}
+          <a
+            href={whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-white/80 hover:text-[#25D366] hover:scale-125 transition-all p-1"
+            title="Contact us on WhatsApp"
+          >
+            <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+              <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+            </svg>
+          </a>
 
         </div>
-      )}
-    </>
+
+      </div>
+    </div>
   );
 };

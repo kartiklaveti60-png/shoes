@@ -4,6 +4,7 @@ import { Sparkles, ShieldCheck, Zap, ArrowRight, Heart, Share2, Scan, CheckCircl
 import { MOCK_PRODUCTS, Product } from '../lib/mockData';
 import { ThreeCanvas } from '../components/shared/ThreeCanvas';
 import { FootScannerModal } from '../components/ai/FootScannerModal';
+import { ResellPredictorModal } from '../components/ai/ResellPredictorModal';
 import { useCartStore } from '../store/useCartStore';
 import { useWishlistStore } from '../store/useWishlistStore';
 
@@ -12,10 +13,10 @@ export const ProductDetail: React.FC = () => {
   const product = MOCK_PRODUCTS.find(p => p.slug === slug) || MOCK_PRODUCTS[0];
 
   const [activeImage, setActiveImage] = useState(product.images[0]);
-  const [viewMode, setViewMode] = useState<'2D' | '3D'>('2D');
   const [selectedColor, setSelectedColor] = useState(product.colors[0]?.name || 'Default');
   const [selectedSize, setSelectedSize] = useState(product.sizes[0]?.size || 'US 10');
   const [scannerOpen, setScannerOpen] = useState(false);
+  const [predictorOpen, setPredictorOpen] = useState(false);
 
   const { addItem } = useCartStore();
   const { toggleWishlist, isInWishlist } = useWishlistStore();
@@ -23,7 +24,7 @@ export const ProductDetail: React.FC = () => {
 
   return (
     <div className="w-full min-h-screen bg-white text-black pt-24 pb-20 px-6 md:px-12 lg:px-16">
-      <div className="max-w-[1700px] mx-auto">
+      <div className="max-w-[1920px] mx-auto">
       
       {/* Foot Scanner Modal */}
       <FootScannerModal isOpen={scannerOpen} onClose={() => setScannerOpen(false)} />
@@ -45,35 +46,11 @@ export const ProductDetail: React.FC = () => {
           {/* Main Visual Box */}
           <div className="relative glass-panel rounded-3xl p-6 border border-black/10 overflow-hidden flex items-center justify-center min-h-[460px] bg-white shadow-sm">
             
-            {/* View Mode Switcher */}
-            <div className="absolute top-4 left-4 z-20 flex gap-2">
-              <button
-                onClick={() => setViewMode('2D')}
-                className={`px-3 py-1.5 rounded-full text-xs font-bold transition-all ${
-                  viewMode === '2D' ? 'bg-black text-white' : 'bg-gray-100 text-gray-800 border border-gray-200'
-                }`}
-              >
-                2D GALLERY
-              </button>
-              <button
-                onClick={() => setViewMode('3D')}
-                className={`px-3 py-1.5 rounded-full text-xs font-bold transition-all flex items-center gap-1 ${
-                  viewMode === '3D' ? 'bg-black text-white shadow-md' : 'bg-gray-100 text-gray-800 border border-gray-200'
-                }`}
-              >
-                <RotateCw className="w-3.5 h-3.5" /> 3D VIEWER
-              </button>
-            </div>
-
-            {viewMode === '2D' ? (
-              <img
-                src={activeImage}
-                alt={product.name}
-                className="max-h-[380px] object-contain transition-all duration-300 transform hover:scale-105"
-              />
-            ) : (
-              <ThreeCanvas className="w-full h-[420px]" />
-            )}
+            <img
+              src={activeImage}
+              alt={product.name}
+              className="max-h-[400px] object-contain transition-all duration-300 transform hover:scale-105"
+            />
 
             {/* Resell estimate badge */}
             <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-md px-3.5 py-2 rounded-2xl border border-black/10 text-xs shadow-sm">
@@ -87,12 +64,9 @@ export const ProductDetail: React.FC = () => {
             {product.images.map((img, idx) => (
               <button
                 key={idx}
-                onClick={() => {
-                  setActiveImage(img);
-                  setViewMode('2D');
-                }}
+                onClick={() => setActiveImage(img)}
                 className={`h-24 glass-panel rounded-2xl overflow-hidden p-2 border transition-all ${
-                  activeImage === img && viewMode === '2D' ? 'border-black bg-gray-100' : 'border-gray-200 hover:border-gray-400'
+                  activeImage === img ? 'border-black bg-gray-100' : 'border-gray-200 hover:border-gray-400'
                 }`}
               >
                 <img src={img} alt="thumb" className="w-full h-full object-contain" />
@@ -115,7 +89,7 @@ export const ProductDetail: React.FC = () => {
 
             <h1 className="font-display text-3xl font-black text-black uppercase">{product.name}</h1>
 
-            <div className="flex items-center gap-4 mt-3">
+            <div className="flex flex-wrap items-center gap-4 mt-3">
               <span className="font-display font-black text-3xl text-black">${product.price}</span>
               {product.originalPrice && (
                 <span className="text-base text-gray-400 line-through">${product.originalPrice}</span>
@@ -123,6 +97,31 @@ export const ProductDetail: React.FC = () => {
               <span className="bg-black text-white text-xs font-bold px-2.5 py-1 rounded-full">
                 ★ {product.rating} ({product.numReviews} Reviews)
               </span>
+            </div>
+
+            {/* Resell Value & Market Analytics Banner */}
+            <div className="mt-4 p-4 rounded-2xl bg-gray-50 border border-gray-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-sm">
+              <div>
+                <span className="text-[10px] font-extrabold text-[#E60023] uppercase tracking-widest flex items-center gap-1">
+                  <Zap className="w-3.5 h-3.5" /> RESELL VALUE PREDICTOR
+                </span>
+                <div className="flex items-center gap-3 mt-1">
+                  <span className="text-xs text-gray-600 font-medium">Est. Resell Value:</span>
+                  <span className="font-mono font-black text-lg text-emerald-600">
+                    ${(product.resellEstimate || product.price * 1.5).toLocaleString()}
+                  </span>
+                  <span className="text-[11px] font-extrabold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800">
+                    +${((product.resellEstimate || product.price * 1.5) - product.price).toLocaleString()} (+{((((product.resellEstimate || product.price * 1.5) - product.price) / product.price) * 100).toFixed(1)}%)
+                  </span>
+                </div>
+              </div>
+
+              <Link
+                to={`/resell-predictor?product=${product.slug}`}
+                className="text-xs font-bold text-black hover:text-[#E60023] border border-black/20 hover:border-black bg-white px-3.5 py-2 rounded-xl transition-all uppercase tracking-wider flex items-center gap-1 shrink-0 shadow-sm hover:shadow-md"
+              >
+                VIEW MARKET GRAPH <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
             </div>
           </div>
 
@@ -268,7 +267,6 @@ export const ProductDetail: React.FC = () => {
                 key={i} 
                 onClick={() => {
                   setActiveImage(imgUrl);
-                  setViewMode('2D');
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
                 className="group glass-panel rounded-3xl p-4 border border-gray-200 hover:border-black transition-all cursor-pointer bg-gray-50 hover:bg-white shadow-sm flex flex-col justify-between"
@@ -291,6 +289,9 @@ export const ProductDetail: React.FC = () => {
           })}
         </div>
       </section>
+
+      {/* Resell Predictor Modal */}
+      <ResellPredictorModal isOpen={predictorOpen} onClose={() => setPredictorOpen(false)} />
 
       </div>
     </div>

@@ -8,12 +8,12 @@ export const Community: React.FC = () => {
   const [posts, setPosts] = useState([
     {
       id: '1',
-      user: 'Kaito Tanaka',
-      handle: '@kaito_tokyo',
+      user: 'Smart Kicks',
+      handle: '@smartkicks_official',
       tier: 'TITAN VIP',
-      avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=200',
-      image: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=80&w=1000',
-      caption: 'Late night walk with the Air Jordan 1 Game-Worn. Iconic craftsmanship is unreal.',
+      avatar: '/images/smart_kicks_community.jpg',
+      image: '/images/smart_kicks_community.jpg',
+      caption: 'Surrounded by pure grail heat! My entire personal collection flexing with SOLE.',
       likes: 1420,
       comments: 38,
       isLiked: false
@@ -23,9 +23,9 @@ export const Community: React.FC = () => {
       user: 'Elena Rostova',
       handle: '@elena_berlin',
       tier: 'LEGEND VIP',
-      avatar: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=200',
-      image: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&q=80&w=1000',
-      caption: 'Monochrome techwear fit paired with the Air Monolith Retro High.',
+      avatar: '/images/elena_rostova_community.jpg',
+      image: '/images/elena_rostova_community.jpg',
+      caption: 'Cozy stairs vibe with the vibrant yellow classic kicks. Comfort & aesthetic on point.',
       likes: 2890,
       comments: 84,
       isLiked: true
@@ -46,7 +46,7 @@ export const Community: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white text-black pt-28 pb-20 px-4 max-w-7xl mx-auto">
+    <div className="w-full min-h-screen bg-white text-black pt-28 pb-20 px-6 md:px-12 lg:px-16 max-w-[1800px] mx-auto">
       
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 pb-6 border-b border-black/10">

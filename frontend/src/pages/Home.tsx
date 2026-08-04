@@ -1,15 +1,17 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { Link } from 'react-router-dom';
-import { ArrowRight, Sparkles, Flame, ShieldCheck, Zap, Award, Play, CheckCircle2, Eye, TrendingUp } from 'lucide-react';
-import { ThreeCanvas } from '../components/shared/ThreeCanvas';
+import { Link, useNavigate } from 'react-router-dom';
+import { ArrowRight, Sparkles, Flame, ShieldCheck, Zap, Award, Play, CheckCircle2, Eye, TrendingUp, ShoppingBag } from 'lucide-react';
 import { MOCK_PRODUCTS, Product } from '../lib/mockData';
 import { useCartStore } from '../store/useCartStore';
 import { useWishlistStore } from '../store/useWishlistStore';
+import { ResellPredictorModal } from '../components/ai/ResellPredictorModal';
 
 export const Home: React.FC = () => {
+  const navigate = useNavigate();
   const { addItem } = useCartStore();
   const { toggleWishlist, isInWishlist } = useWishlistStore();
 
+  const [isPredictorOpen, setIsPredictorOpen] = useState(false);
   const [activeHypedTab, setActiveHypedTab] = useState<string>('All');
   const hypedCategories = ['All', 'Chicago Lost & Found', 'Reverse Mocha', 'Orange Lobster', 'Off-White Chicago'];
 
@@ -46,7 +48,7 @@ export const Home: React.FC = () => {
         {/* Background Radial Glow */}
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-black/5 rounded-full blur-[140px] pointer-events-none" />
 
-        <div className="max-w-[1700px] mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10 py-12">
+        <div className="max-w-[1920px] mx-auto w-full px-6 md:px-12 lg:px-16 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10 py-12">
           
           {/* Left Hero Text */}
           <div className="lg:col-span-6 space-y-6 text-left">
@@ -74,14 +76,6 @@ export const Home: React.FC = () => {
                 EXPLORE VAULT
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
-
-              <Link
-                to="/ai-stylist"
-                className="glass-panel text-black px-6 py-4 rounded-full font-bold text-sm hover:bg-black/5 transition-all flex items-center gap-2 border border-black/10"
-              >
-                <Sparkles className="w-4 h-4 text-[#E60023]" />
-                LAUNCH AI STYLIST
-              </Link>
             </div>
 
             {/* Quick Metrics */}
@@ -101,24 +95,70 @@ export const Home: React.FC = () => {
             </div>
           </div>
 
-          {/* Right 3D Showcase */}
+          {/* Right Showcase Card: #1 Best Seller */}
           <div className="lg:col-span-6 relative">
-            <div className="glass-panel rounded-3xl p-4 border border-black/10 relative overflow-hidden shadow-xl bg-white">
-              <div className="absolute top-4 left-4 z-10 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-black border border-black/10 flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-[#E60023] animate-ping" />
-                INTERACTIVE 3D MODEL
-              </div>
-
-              {/* R3F 3D Canvas */}
-              <ThreeCanvas className="w-full h-[420px]" />
-
-              <div className="absolute bottom-4 left-4 right-4 z-10 bg-white/90 backdrop-blur-md p-4 rounded-2xl border border-black/10 flex items-center justify-between shadow-sm">
-                <div>
-                  <h4 className="font-bold text-sm text-black">Air Jordan 1 Game-Worn</h4>
-                  <p className="text-xs text-gray-500 font-medium">Original 1985 • Game-Worn & Signed</p>
+            <div className="glass-panel rounded-3xl p-6 border border-black/10 relative overflow-hidden shadow-xl bg-white space-y-6">
+              
+              {/* Badge */}
+              <div className="flex items-center justify-between">
+                <div className="bg-black text-white px-3.5 py-1.5 rounded-full text-xs font-black tracking-wider uppercase flex items-center gap-1.5 shadow-md">
+                  <Flame className="w-3.5 h-3.5 text-[#E60023]" />
+                  #1 BEST SELLING SNEAKER IN OUR WEBSITE
                 </div>
-                <span className="font-display font-black text-lg text-black">$560,000</span>
+                <span className="text-[11px] font-bold text-green-700 bg-green-50 px-2.5 py-1 rounded-full border border-green-200">
+                  IN STOCK • VERIFIED AUTHENTIC
+                </span>
               </div>
+
+              {/* Product Image */}
+              <Link
+                to="/product/nike-air-jordan-1-high-chicago-lost-and-found"
+                className="block h-64 sm:h-72 bg-gray-50 rounded-2xl overflow-hidden p-4 relative border border-gray-100 group"
+              >
+                <img
+                  src="/images/aj1-chicago-lost-found.jpg"
+                  alt="Air Jordan 1 High Chicago Lost and Found"
+                  className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
+                />
+              </Link>
+
+              {/* Product Details & Prices */}
+              <div className="space-y-4">
+                <div>
+                  <Link to="/product/nike-air-jordan-1-high-chicago-lost-and-found" className="block group">
+                    <h3 className="font-display font-black text-2xl text-black group-hover:text-[#E60023] transition-colors">
+                      Air Jordan 1 High Chicago "Lost & Found"
+                    </h3>
+                  </Link>
+                  <p className="text-xs text-gray-500 font-medium mt-1">
+                    Original 1985 Chicago Colorway • Vintage Cracked Leather Collar & Aged Midsole
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-2 gap-4 p-4 bg-gray-50 rounded-2xl border border-gray-200">
+                  <div>
+                    <span className="text-[11px] text-gray-500 font-bold block uppercase">RETAIL PRICE</span>
+                    <span className="font-display font-black text-xl text-black">$180</span>
+                  </div>
+                  <div>
+                    <span className="text-[11px] text-gray-500 font-bold block uppercase">EST. RESELL VALUE</span>
+                    <span className="font-display font-black text-xl text-green-600">$300</span>
+                  </div>
+                </div>
+
+                {/* Checkout Button */}
+                <div className="flex items-center gap-3 pt-1">
+                  <Link
+                    to="/product/nike-air-jordan-1-high-chicago-lost-and-found"
+                    className="w-full bg-black hover:bg-[#E60023] text-white py-4 rounded-full font-bold text-sm transition-all shadow-lg flex items-center justify-center gap-2 group"
+                  >
+                    <ShoppingBag className="w-4 h-4" />
+                    CHECK OUT NOW
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </Link>
+                </div>
+              </div>
+
             </div>
           </div>
 
@@ -126,7 +166,7 @@ export const Home: React.FC = () => {
       </section>
 
       {/* ================= HYPED SNEAKERS SECTION ================= */}
-      <section className="py-20 px-4 max-w-[1700px] mx-auto">
+      <section className="py-20 px-6 md:px-12 lg:px-16 max-w-[1920px] mx-auto">
         <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-10 pb-6 border-b border-black/10 gap-6">
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black text-white text-[11px] font-extrabold tracking-widest uppercase mb-3 shadow-md">
@@ -306,6 +346,48 @@ export const Home: React.FC = () => {
         )}
       </section>
 
+      {/* ================= EDITORIAL LIFESTYLE CAMPAIGN BANNER ================= */}
+      <section className="py-12 px-6 md:px-12 lg:px-16 max-w-[1920px] mx-auto">
+        <div className="relative rounded-3xl overflow-hidden glass-panel border border-black/10 shadow-2xl group">
+          {/* Campaign Image */}
+          <div className="relative h-[380px] sm:h-[460px] w-full overflow-hidden bg-black">
+            <img
+              src="/images/timeless-pairs-endless-styling.png"
+              alt="Timeless Pairs. Endless Styling."
+              className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700 opacity-95"
+            />
+            {/* Dark Gradient Overlay covering bottom */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+          </div>
+
+          {/* Overlay Content & CTA */}
+          <div className="absolute bottom-0 left-0 right-0 p-8 sm:p-12 flex flex-col md:flex-row items-start md:items-end justify-between gap-6 z-10">
+            <div className="space-y-2 max-w-2xl">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/90 backdrop-blur-md text-black text-[11px] font-black tracking-widest uppercase shadow-md">
+                <Sparkles className="w-3.5 h-3.5 text-[#E60023]" />
+                SS26 EDITORIAL CAMPAIGN
+              </div>
+              <h2 className="font-display font-black text-3xl sm:text-5xl uppercase tracking-tighter text-white drop-shadow-md">
+                TIMELESS PAIRS. ENDLESS STYLING.
+              </h2>
+              <p className="text-xs sm:text-sm text-gray-200 font-medium leading-relaxed max-w-lg">
+                From iconic OG colorways to everyday streetwear grails. Discover timeless sneaker silhouettes curated for versatile luxury styling.
+              </p>
+            </div>
+
+            <div className="flex items-center gap-4 shrink-0">
+              <Link
+                to="/lookbook"
+                className="bg-white hover:bg-[#E60023] hover:text-white text-black px-8 py-4 rounded-full font-black text-xs transition-all shadow-xl flex items-center gap-2 uppercase tracking-wider group/btn"
+              >
+                EXPLORE STYLING LOOKBOOK
+                <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ================= LIMITED DROP COUNTDOWN ================= */}
       <section className="py-16 px-4 bg-gray-50 border-y border-black/10">
         <div className="max-w-[1700px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
@@ -356,62 +438,73 @@ export const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* ================= NIKE-KILLER AI FEATURES GRID ================= */}
+      {/* ================= RESELL VALUE PREDICTOR SECTION ================= */}
       <section className="py-24 px-4 max-w-[1700px] mx-auto">
-        <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
-          <span className="text-xs font-bold tracking-widest text-[#E60023] uppercase">PROPRIETARY TECHNOLOGY</span>
+        <div className="text-center max-w-3xl mx-auto mb-12 space-y-3">
+          <span className="text-xs font-bold tracking-widest text-[#E60023] uppercase">PROPRIETARY MARKET INTELLIGENCE</span>
           <h2 className="font-display text-3xl sm:text-5xl font-black uppercase text-black">
-            BEYOND STANDARD SHOPPING
+            RESELL VALUE PREDICTOR
           </h2>
-          <p className="text-gray-600 text-sm font-medium">
-            AI features engineered directly into your fashion workflow that traditional retail websites simply don't have.
+          <p className="text-gray-600 text-sm font-medium max-w-xl mx-auto">
+            Real-time market valuation engine tracking retail vs estimated resell value, ROI percentage curves, and price trajectory forecasts for all sneakers on our platform.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          
-          {/* Card 1: AI Outfit Generator */}
-          <div className="glass-panel rounded-3xl p-8 border border-black/10 hover:border-black transition-all group bg-white hover:shadow-xl">
-            <div className="w-12 h-12 rounded-2xl bg-black text-white flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-              <Sparkles className="w-6 h-6 text-[#E60023]" />
+        {/* Resell Predictor Container */}
+        <div className="max-w-4xl mx-auto glass-panel rounded-3xl p-8 border border-black/10 bg-white shadow-2xl space-y-8">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-6 pb-6 border-b border-gray-100">
+            <div className="flex items-center gap-4">
+              <div className="w-14 h-14 rounded-2xl bg-black text-white flex items-center justify-center shadow-lg shrink-0">
+                <Zap className="w-7 h-7 text-[#E60023]" />
+              </div>
+              <div>
+                <h3 className="font-display font-black text-2xl text-black uppercase tracking-tight">MARKET INVESTMENT INDEX</h3>
+                <p className="text-xs text-gray-500 font-medium">Click below to open the complete interactive graph & analytics suite for all sneakers.</p>
+              </div>
             </div>
-            <h3 className="font-display font-bold text-xl text-black mb-2">AI OUTFIT GENERATOR</h3>
-            <p className="text-xs text-gray-600 leading-relaxed mb-6 font-medium">
-              Upload or pick a sneaker, and our neural engine builds matching apparel layering based on weather, occasion, and color theory.
-            </p>
-            <Link to="/ai-stylist" className="text-xs font-bold text-black hover:text-[#E60023] flex items-center gap-1">
-              TRY OUTFIT GENERATOR <ArrowRight className="w-3.5 h-3.5" />
+
+            <Link
+              to="/resell-predictor"
+              className="bg-black hover:bg-[#E60023] text-white px-7 py-3.5 rounded-full font-black text-xs transition-all shadow-xl flex items-center gap-2 uppercase tracking-wider shrink-0"
+            >
+              <TrendingUp className="w-4 h-4 text-[#E60023]" />
+              OPEN FULL GRAPH PREDICTOR
+              <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
 
-          {/* Card 2: 3D Foot Scanner */}
-          <div className="glass-panel rounded-3xl p-8 border border-black/10 hover:border-black transition-all group bg-white hover:shadow-xl">
-            <div className="w-12 h-12 rounded-2xl bg-black text-white flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-              <ShieldCheck className="w-6 h-6 text-[#E60023]" />
-            </div>
-            <h3 className="font-display font-bold text-xl text-black mb-2">3D FOOT SCANNER</h3>
-            <p className="text-xs text-gray-600 leading-relaxed mb-6 font-medium">
-              Zero return sizing. Maps foot length and width down to the millimeter to guarantee 99.8% accurate US & EU shoe fitting.
-            </p>
-            <Link to="/shop" className="text-xs font-bold text-black hover:text-[#E60023] flex items-center gap-1">
-              SCAN YOUR FIT <ArrowRight className="w-3.5 h-3.5" />
-            </Link>
-          </div>
+          {/* Quick Preview Ticker of Top Hyped & Limited Edition Sneakers */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {MOCK_PRODUCTS.filter(p => p.isHyped === true || p.isLimited === true).slice(0, 3).map((prod: Product) => {
+              const retail = prod.price || 150;
+              const resell = prod.resellEstimate || retail * 1.5;
+              const roi = (((resell - retail) / retail) * 100).toFixed(1);
 
-          {/* Card 3: Resell Value Index */}
-          <div className="glass-panel rounded-3xl p-8 border border-black/10 hover:border-black transition-all group bg-white hover:shadow-xl">
-            <div className="w-12 h-12 rounded-2xl bg-black text-white flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-              <Zap className="w-6 h-6 text-[#E60023]" />
-            </div>
-            <h3 className="font-display font-bold text-xl text-black mb-2">RESELL VALUE PREDICTOR</h3>
-            <p className="text-xs text-gray-600 leading-relaxed mb-6 font-medium">
-              Track investment potential for every sneaker pair in real-time. Know whether to hold, wear, or trade based on market analytics.
-            </p>
-            <Link to="/account" className="text-xs font-bold text-black hover:text-[#E60023] flex items-center gap-1">
-              VIEW TASTE GRAPH <ArrowRight className="w-3.5 h-3.5" />
-            </Link>
+              return (
+                <Link
+                  key={prod._id}
+                  to={`/resell-predictor?product=${prod.slug}`}
+                  className="p-4 rounded-2xl bg-gray-50 border border-gray-200 hover:border-black transition-all cursor-pointer group flex items-center gap-3 shadow-sm hover:shadow-md"
+                >
+                  <img
+                    src={prod.images[0]}
+                    alt={prod.name}
+                    className="w-12 h-12 object-contain rounded-xl bg-white p-1 border border-gray-200 shrink-0"
+                  />
+                  <div className="overflow-hidden">
+                    <span className="font-bold text-xs text-black truncate block">{prod.name}</span>
+                    <div className="flex items-center gap-2 text-[11px] mt-0.5">
+                      <span className="text-gray-500 font-medium">${retail} ➔</span>
+                      <span className="font-black text-emerald-600">${resell.toLocaleString()}</span>
+                    </div>
+                    <span className="text-[10px] font-extrabold text-[#E60023] group-hover:underline flex items-center gap-0.5 mt-0.5">
+                      +${(resell - retail).toLocaleString()} ({roi}%) <ArrowRight className="w-3 h-3" />
+                    </span>
+                  </div>
+                </Link>
+              );
+            })}
           </div>
-
         </div>
       </section>
 
@@ -427,18 +520,16 @@ export const Home: React.FC = () => {
           </Link>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {[
-            { img: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=80&w=800", user: "@kaito_tokyo", likes: "1.4k" },
-            { img: "https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&q=80&w=800", user: "@sarah_berlin", likes: "2.1k" },
-            { img: "https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&q=80&w=800", user: "@marcus_nyc", likes: "980" },
-            { img: "https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&q=80&w=800", user: "@elena_paris", likes: "3.2k" }
+            { img: "/images/smart_kicks_community.jpg", user: "@smartkicks_official", likes: "1.4k" },
+            { img: "/images/elena_rostova_community.jpg", user: "@elena_berlin", likes: "2.8k" }
           ].map((look, i) => (
-            <div key={i} className="relative rounded-2xl overflow-hidden h-80 group shadow-sm">
+            <div key={i} className="relative rounded-3xl overflow-hidden h-96 group shadow-md">
               <img src={look.img} alt={look.user} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent p-4 flex flex-col justify-end">
-                <span className="text-xs font-bold text-white">{look.user}</span>
-                <span className="text-[11px] text-[#E60023] font-semibold">❤️ {look.likes} Likes</span>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent p-6 flex flex-col justify-end">
+                <span className="text-sm font-black text-white uppercase tracking-wider">{look.user}</span>
+                <span className="text-xs text-[#E60023] font-bold mt-1">❤️ {look.likes} Likes</span>
               </div>
             </div>
           ))}

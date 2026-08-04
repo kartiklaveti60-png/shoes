@@ -6,7 +6,7 @@ export const Account: React.FC = () => {
   const { user } = useAuthStore();
 
   return (
-    <div className="min-h-screen bg-white text-black pt-28 pb-20 px-4 max-w-7xl mx-auto">
+    <div className="w-full min-h-screen bg-white text-black pt-28 pb-20 px-6 md:px-12 lg:px-16 max-w-[1920px] mx-auto">
       
       {/* Profile Banner */}
       <div className="glass-panel rounded-3xl p-8 border border-black/10 flex flex-col md:flex-row items-center justify-between gap-6 mb-10 bg-white shadow-sm">

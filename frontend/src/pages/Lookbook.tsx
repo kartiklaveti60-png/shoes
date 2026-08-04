@@ -1,10 +1,8 @@
 import React from 'react';
-import { ArrowRight, Camera } from 'lucide-react';
-import { Link } from 'react-router-dom';
 
 export const Lookbook: React.FC = () => {
   return (
-    <div className="min-h-screen bg-white text-black pt-28 pb-20 px-4 max-w-7xl mx-auto space-y-20">
+    <div className="w-full min-h-screen bg-white text-black pt-28 pb-20 px-6 md:px-12 lg:px-16 max-w-[1800px] mx-auto space-y-20">
       
       {/* Title */}
       <div className="text-center max-w-3xl mx-auto space-y-3">
@@ -19,20 +17,17 @@ export const Lookbook: React.FC = () => {
       <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
         <div className="md:col-span-7 rounded-3xl overflow-hidden h-[500px] shadow-lg border border-gray-200">
           <img
-            src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=80&w=1200"
-            alt="Lookbook 1"
+            src="https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&q=80&w=1200"
+            alt="Urban Grail Curation"
             className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
           />
         </div>
         <div className="md:col-span-5 space-y-4">
           <span className="text-xs font-bold text-[#E60023] uppercase">CHAPTER 01</span>
-          <h2 className="font-display text-3xl font-black uppercase text-black">NEO-TOKYO SILHOUETTES</h2>
+          <h2 className="font-display text-3xl font-black uppercase text-black">URBAN GRAIL CURATION</h2>
           <p className="text-xs text-gray-600 leading-relaxed font-medium">
-            Captured across late-night Shibuya crosswalks. The Cyber-X 01 reflects environmental light while maintaining absolute carbon fiber stability.
+            Captured across high-contrast cityscapes. Featuring hyper-exclusive silhouettes, premium leather craftsmanship, and iconic colorways that define modern street culture.
           </p>
-          <Link to="/shop" className="inline-flex items-center gap-2 text-xs font-bold text-black hover:text-[#E60023]">
-            SHOP THE LOOK <ArrowRight className="w-4 h-4" />
-          </Link>
         </div>
       </div>
 
@@ -40,18 +35,15 @@ export const Lookbook: React.FC = () => {
       <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
         <div className="md:col-span-5 space-y-4 order-2 md:order-1">
           <span className="text-xs font-bold text-[#E60023] uppercase">CHAPTER 02</span>
-          <h2 className="font-display text-3xl font-black uppercase text-black">QUANTUM ENDURANCE</h2>
+          <h2 className="font-display text-3xl font-black uppercase text-black">LIMITED EDITION SILHOUETTES</h2>
           <p className="text-xs text-gray-600 leading-relaxed font-medium">
-            Minimalist techwear meet marathon performance. Tested in sub-zero atmospheric chambers for ultimate durability.
+            A celebration of rare drops and high-appreciation grails. Meticulously sourced for collectors who demand 100% authenticity and timeless footwear design.
           </p>
-          <Link to="/shop" className="inline-flex items-center gap-2 text-xs font-bold text-black hover:text-[#E60023]">
-            EXPLORE RUNNING VAULT <ArrowRight className="w-4 h-4" />
-          </Link>
         </div>
         <div className="md:col-span-7 rounded-3xl overflow-hidden h-[500px] order-1 md:order-2 shadow-lg border border-gray-200">
           <img
-            src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&q=80&w=1200"
-            alt="Lookbook 2"
+            src="https://images.unsplash.com/photo-1512374382149-233c42b6a83b?auto=format&fit=crop&q=80&w=1200"
+            alt="Limited Edition Silhouettes"
             className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
           />
         </div>

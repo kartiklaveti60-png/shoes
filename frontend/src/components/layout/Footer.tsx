@@ -5,14 +5,22 @@ import { ArrowRight, ShieldCheck, Sparkles } from 'lucide-react';
 export const Footer: React.FC = () => {
   return (
     <footer className="bg-gray-50 text-black border-t border-gray-200 pt-20 pb-12 px-6 md:px-12 lg:px-16">
-      <div className="max-w-[1700px] w-full mx-auto grid grid-cols-1 md:grid-cols-12 gap-12 pb-16 border-b border-gray-200">
+      <div className="max-w-[1920px] w-full mx-auto grid grid-cols-1 md:grid-cols-12 gap-12 pb-16 border-b border-gray-200">
         
         {/* Brand Story */}
         <div className="md:col-span-5 space-y-4">
-          <Link to="/" className="flex items-center gap-2">
-            <span className="font-display font-bold text-3xl tracking-tighter text-black">SOLE</span>
+          <a 
+            href="/" 
+            onClick={(e) => {
+              e.preventDefault();
+              window.location.href = '/';
+            }}
+            className="flex items-center gap-2 cursor-pointer group select-none"
+            title="Return to Home Page"
+          >
+            <span className="font-display font-bold text-3xl tracking-tighter text-black group-hover:text-[#E60023] transition-colors">SOLE</span>
             <span className="w-2.5 h-2.5 rounded-full bg-[#E60023] animate-pulse" />
-          </Link>
+          </a>
 
           <p className="text-xs text-gray-600 max-w-sm leading-relaxed font-medium">
             The world's premier luxury sneaker platform. Engineered with 3D spatial scanning, nitrogen-infused foam, and proprietary AI fashion intelligence.
@@ -29,7 +37,6 @@ export const Footer: React.FC = () => {
           <ul className="space-y-2 text-xs text-gray-600 font-medium">
             <li><Link to="/shop" className="hover:text-black transition-colors">All Sneakers</Link></li>
             <li><Link to="/drops" className="hover:text-black transition-colors">Release Calendar</Link></li>
-            <li><Link to="/ai-stylist" className="hover:text-black transition-colors">AI Outfit Studio</Link></li>
             <li><Link to="/community" className="hover:text-black transition-colors">On-Foot Gallery</Link></li>
             <li><Link to="/lookbook" className="hover:text-black transition-colors">Editorial Lookbook</Link></li>
           </ul>
