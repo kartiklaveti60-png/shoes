@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { CustomCursor } from './components/shared/CustomCursor';
 import { SmoothScroll } from './components/shared/SmoothScroll';
 import { ScrollToTop } from './components/shared/ScrollToTop';
-import { IntroLoader } from './components/shared/IntroLoader';
 import { Navbar } from './components/layout/Navbar';
 import { Footer } from './components/layout/Footer';
 import { CartDrawer } from './components/cart/CartDrawer';
@@ -25,17 +24,12 @@ import { ContactPage } from './pages/ContactPage';
 
 export const App: React.FC = () => {
   const [searchOpen, setSearchOpen] = useState(false);
-  const [showIntro, setShowIntro] = useState(true);
 
   return (
     <Router>
       <ScrollToTop />
       <SmoothScroll>
-        <div className="relative min-h-screen bg-[#0A0A0A] text-white antialiased">
-          
-          {/* Luxury 3.5s Website Intro Animation */}
-          {showIntro && <IntroLoader onComplete={() => setShowIntro(false)} />}
-
+        <div className="relative min-h-screen bg-[#FFF7E5] text-[#1A1008] antialiased">
           
           {/* Custom Luxury Magnetic Cursor */}
           <CustomCursor />

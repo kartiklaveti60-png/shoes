@@ -5,8 +5,8 @@
 @layer base {
   body {
     font-family: 'Inter', sans-serif;
-    background-color: #FFFFFF;
-    color: #0A0A0A;
+    background-color: #FFF7E5;
+    color: #1A1008;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -15,43 +15,48 @@
   }
 }
 
-/* Custom Luxury Light Scrollbar */
+/* Warm Luxury Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #FFFFFF;
+  background: #FFF7E5;
 }
 ::-webkit-scrollbar-thumb {
-  background: #D4D4D8;
+  background: #E8D5B0;
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #000000;
+  background: #D52122;
 }
 
-/* Subtle noise overlay */
+/* Subtle warm noise overlay */
 .bg-noise {
-  background-image: radial-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 0);
+  background-image: radial-gradient(rgba(213, 33, 34, 0.02) 1px, transparent 0);
   background-size: 24px 24px;
 }
 
-/* Glassmorphism utility for Light Theme */
+/* Glassmorphism — Warm Vanilla Theme */
 .glass-panel {
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 247, 229, 0.92);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(232, 213, 176, 0.6);
+  box-shadow: 0 10px 30px -10px rgba(26, 16, 8, 0.08);
 }
 
 .glass-panel-hover:hover {
-  border-color: rgba(0, 0, 0, 0.2);
-  background: #FFFFFF;
-  box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.1);
+  border-color: rgba(213, 33, 34, 0.25);
+  background: #FFF7E5;
+  box-shadow: 0 15px 35px -10px rgba(213, 33, 34, 0.12);
 }
 
 /* Clean & Responsive Cursor Styling */
 a, button, input, select, [role="button"] {
   cursor: pointer;
+}
+
+/* Rouge glow shadow utility */
+.shadow-glow-red {
+  box-shadow: 0 0 12px rgba(213, 33, 34, 0.45);
 }

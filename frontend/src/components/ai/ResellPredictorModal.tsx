@@ -44,31 +44,31 @@ const SneakerGraphCard: React.FC<{ product: Product }> = ({ product }) => {
   const areaD = `${pathD} L ${points[points.length - 1].x} ${svgHeight - padding} L ${points[0].x} ${svgHeight - padding} Z`;
 
   return (
-    <div className="glass-panel p-6 rounded-3xl border border-black/10 bg-gradient-to-br from-gray-900 via-gray-950 to-black text-white shadow-xl hover:border-[#E60023]/60 transition-all">
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-4 border-b border-gray-800">
+    <div className="glass-panel p-6 rounded-3xl border border-[#E8D5B0] bg-[#FFFDF5] shadow-xl hover:border-[#E60023]/60 transition-all">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-4 border-b border-[#E8D5B0]/70">
         <div className="flex items-center gap-3.5">
           <img
             src={product.images[0]}
             alt={product.name}
-            className="w-14 h-14 object-contain rounded-2xl bg-white p-1.5 border border-gray-700 shrink-0"
+            className="w-14 h-14 object-contain rounded-2xl bg-white p-1.5 border border-gray-200 shrink-0 shadow-sm"
           />
           <div>
             <span className="text-[10px] font-black text-[#E60023] uppercase tracking-widest">{product.brand}</span>
-            <h3 className="font-display font-black text-base sm:text-lg text-white uppercase tracking-tight line-clamp-1">{product.name}</h3>
+            <h3 className="font-display font-black text-base sm:text-lg text-gray-900 uppercase tracking-tight line-clamp-1">{product.name}</h3>
             <div className="flex items-center gap-3 mt-1 text-xs">
-              <span className="text-gray-400">Retail: <strong className="text-white">${retail.toLocaleString()}</strong></span>
-              <span className="text-gray-400">Est. Resell: <strong className="text-emerald-400">${resell.toLocaleString()}</strong></span>
+              <span className="text-gray-600 font-medium">Retail: <strong className="text-gray-900 font-bold">${retail.toLocaleString()}</strong></span>
+              <span className="text-gray-600 font-medium">Est. Resell: <strong className="text-emerald-700 font-black">${resell.toLocaleString()}</strong></span>
             </div>
           </div>
         </div>
 
         <div className="flex items-center gap-3 shrink-0">
-          <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 font-extrabold text-xs border border-emerald-500/30">
-            <TrendingUp className="w-3.5 h-3.5" /> +${profit.toLocaleString()} ({roi}%)
+          <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 font-extrabold text-xs border border-emerald-300/60 shadow-sm">
+            <TrendingUp className="w-3.5 h-3.5 text-emerald-700" /> +${profit.toLocaleString()} ({roi}%)
           </span>
           <Link
             to={`/product/${product.slug}`}
-            className="px-3.5 py-1.5 rounded-full bg-white text-black hover:bg-[#E60023] hover:text-white text-[10px] font-extrabold transition-all uppercase tracking-wider"
+            className="px-3.5 py-1.5 rounded-full bg-black text-white hover:bg-[#E60023] text-[10px] font-extrabold transition-all uppercase tracking-wider shadow-sm"
           >
             VIEW SNEAKER
           </Link>
@@ -80,14 +80,14 @@ const SneakerGraphCard: React.FC<{ product: Product }> = ({ product }) => {
         <svg viewBox={`0 0 ${svgWidth} ${svgHeight}`} className="w-full h-44 overflow-visible">
           <defs>
             <linearGradient id={`chartGrad_${product._id}`} x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#E60023" stopOpacity="0.45" />
-              <stop offset="100%" stopColor="#E60023" stopOpacity="0.0" />
+              <stop offset="0%" stopColor="#E60023" stopOpacity="0.35" />
+              <stop offset="100%" stopColor="#E60023" stopOpacity="0.02" />
             </linearGradient>
           </defs>
 
-          <line x1={padding} y1={padding} x2={svgWidth - padding} y2={padding} stroke="#333" strokeDasharray="3 3" />
-          <line x1={padding} y1={svgHeight / 2} x2={svgWidth - padding} y2={svgHeight / 2} stroke="#333" strokeDasharray="3 3" />
-          <line x1={padding} y1={svgHeight - padding} x2={svgWidth - padding} y2={svgHeight - padding} stroke="#333" />
+          <line x1={padding} y1={padding} x2={svgWidth - padding} y2={padding} stroke="#D1D5DB" strokeDasharray="3 3" />
+          <line x1={padding} y1={svgHeight / 2} x2={svgWidth - padding} y2={svgHeight / 2} stroke="#D1D5DB" strokeDasharray="3 3" />
+          <line x1={padding} y1={svgHeight - padding} x2={svgWidth - padding} y2={svgHeight - padding} stroke="#9CA3AF" />
 
           <path d={areaD} fill={`url(#chartGrad_${product._id})`} />
           <path d={pathD} fill="none" stroke="#E60023" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
@@ -95,10 +95,10 @@ const SneakerGraphCard: React.FC<{ product: Product }> = ({ product }) => {
           {points.map((pt, i) => (
             <g key={i}>
               <circle cx={pt.x} cy={pt.y} r="5" className="fill-black stroke-[#E60023] stroke-[2.5]" />
-              <text x={pt.x} y={pt.y - 10} textAnchor="middle" fill="#FFFFFF" fontSize="9" fontWeight="bold">
+              <text x={pt.x} y={pt.y - 10} textAnchor="middle" fill="#111827" fontSize="9.5" fontWeight="800">
                 ${pt.pt.price.toLocaleString()}
               </text>
-              <text x={pt.x} y={svgHeight - 8} textAnchor="middle" fill="#9CA3AF" fontSize="8" fontWeight="600">
+              <text x={pt.x} y={svgHeight - 8} textAnchor="middle" fill="#374151" fontSize="8.5" fontWeight="700">
                 {pt.pt.label}
               </text>
             </g>

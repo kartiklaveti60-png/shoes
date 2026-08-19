@@ -4,10 +4,52 @@ import { Send, Mail, MapPin, Phone, CheckCircle2, MessageCircle, ArrowRight, Shi
 export const ContactPage: React.FC = () => {
   const [formData, setFormData] = useState({ name: '', email: '', subject: 'General Inquiry', message: '' });
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.message) return;
+
+    setSubmitting(true);
+
+    const newMsgObj = {
+      id: 'msg_' + Date.now(),
+      name: formData.name,
+      email: formData.email,
+      subject: formData.subject || 'General Inquiry',
+      message: formData.message,
+      status: 'Unread',
+      date: new Date().toISOString()
+    };
+
+    // 1. Save to sole_client_messages in localStorage for real-time cross-port sync to Admin Portal
+    try {
+      const existing = localStorage.getItem('sole_client_messages');
+      const messagesArr = existing ? JSON.parse(existing) : [];
+      messagesArr.unshift(newMsgObj);
+      localStorage.setItem('sole_client_messages', JSON.stringify(messagesArr));
+      window.dispatchEvent(new Event('storage'));
+    } catch (e) {
+      console.error('LocalStorage sync error:', e);
+    }
+
+    // 2. Send to Backend Express API
+    try {
+      await fetch('http://localhost:5000/api/v1/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject,
+          message: formData.message
+        })
+      });
+    } catch (err) {
+      console.warn('Backend API connection warning (using local sync fallback):', err);
+    }
+
+    setSubmitting(false);
     setSubmitted(true);
   };
 
@@ -22,7 +64,7 @@ export const ContactPage: React.FC = () => {
         <div className="p-8 sm:p-12 rounded-3xl bg-black text-white border border-gray-800 shadow-2xl relative overflow-hidden">
           <div className="relative z-10 max-w-3xl space-y-4">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#E60023] text-white text-[11px] font-black tracking-widest uppercase shadow-md">
-              <Sparkles className="w-3.5 h-3.5 fill-white" /> 24/7 VIP GRAIL CONCIERGE
+              <Sparkles className="w-3.5 h-3.5 fill-white" /> 24/7 GRAIL CONCIERGE
             </div>
             <h1 className="font-display text-4xl sm:text-6xl font-black uppercase tracking-tight text-white">
               GET IN TOUCH
@@ -126,7 +168,7 @@ export const ContactPage: React.FC = () => {
         <div className="glass-panel p-8 sm:p-12 rounded-3xl border border-black/10 bg-white shadow-xl max-w-4xl mx-auto">
           <div className="max-w-2xl mb-8 space-y-2">
             <span className="text-xs font-black text-[#E60023] uppercase tracking-widest">SEND A DIRECT INQUIRY</span>
-            <h2 className="font-display font-black text-3xl text-black uppercase">VIP CONCIERGE FORM</h2>
+            <h2 className="font-display font-black text-3xl text-black uppercase">CONCIERGE FORM</h2>
             <p className="text-xs text-gray-600 font-medium">
               Specify your size sourcing requests, order questions, or consignment details below.
             </p>
@@ -202,9 +244,10 @@ export const ContactPage: React.FC = () => {
 
               <button
                 type="submit"
-                className="w-full bg-black text-white py-4 rounded-xl font-black text-xs hover:bg-[#E60023] transition-all shadow-xl flex items-center justify-center gap-2 uppercase tracking-wider"
+                disabled={submitting}
+                className="w-full bg-black text-white py-4 rounded-xl font-black text-xs hover:bg-[#E60023] disabled:bg-gray-400 transition-all shadow-xl flex items-center justify-center gap-2 uppercase tracking-wider"
               >
-                SUBMIT VIP INQUIRY <Send className="w-4 h-4" />
+                {submitting ? 'TRANSMITTING INQUIRY...' : 'SUBMIT INQUIRY'} <Send className="w-4 h-4" />
               </button>
             </form>
           )}

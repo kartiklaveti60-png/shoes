@@ -1,8 +1,7 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export const AIStylistDrawer: React.FC = () => {
-  const navigate = useNavigate();
   const instagramUrl = "https://instagram.com";
   const whatsappUrl = "https://wa.me/15550192834?text=Hello%20SOLE%20Team!%20I%20have%20an%20inquiry%20about%20a%20sneaker.";
 
@@ -12,25 +11,21 @@ export const AIStylistDrawer: React.FC = () => {
       <div className="relative group">
         
         {/* Ambient Glowing Reflection Backdrop */}
-        <div className="absolute -inset-1 bg-gradient-to-r from-red-500/30 via-white/40 to-red-500/30 rounded-full blur-md opacity-70 group-hover:opacity-100 transition duration-500 animate-pulse" />
+        <div className="absolute -inset-1 bg-gradient-to-r from-red-500/30 via-white/40 to-red-500/30 rounded-full blur-md opacity-70 group-hover:opacity-100 transition duration-500 animate-pulse pointer-events-none" />
 
         {/* Glassmorphic Floating Button */}
-        <div className="relative bg-black/60 hover:bg-black/80 backdrop-blur-2xl text-white px-5 py-3 rounded-full font-extrabold text-xs shadow-2xl flex items-center gap-3 border border-white/20 hover:border-white/50 transition-all duration-300 transform hover:scale-105">
+        <div className="relative bg-black/80 hover:bg-black backdrop-blur-2xl text-white px-5 py-3 rounded-full font-extrabold text-xs shadow-2xl flex items-center gap-3 border border-white/20 hover:border-white/50 transition-all duration-300 transform hover:scale-105">
           
-          {/* Contact Us Webpage Button Trigger */}
-          <button
-            onClick={() => navigate('/contact')}
+          {/* Contact Us Webpage Link Trigger */}
+          <Link
+            to="/contact"
             className="flex items-center gap-2 text-white hover:text-[#E60023] transition-colors focus:outline-none cursor-pointer"
-            title="Open Contact Us Webpage"
+            title="Open Contact Us Page"
           >
-            <span className="relative flex h-2.5 w-2.5">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#E60023] opacity-75" />
-              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#E60023]" />
-            </span>
             <span className="uppercase tracking-widest font-black text-xs text-white group-hover:text-white transition-colors">
               CONTACT US
             </span>
-          </button>
+          </Link>
 
           <div className="h-4 w-px bg-white/30 mx-0.5" />
 

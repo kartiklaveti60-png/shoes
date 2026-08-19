@@ -84,7 +84,7 @@ export const useCartStore = create<CartState>((set, get) => ({
   })),
 
   applyCoupon: (code) => {
-    if (code.toUpperCase() === 'FUTURE15' || code.toUpperCase() === 'SOLEVIP') {
+    if (code.toUpperCase() === 'FUTURE15' || code.toUpperCase() === 'SOLE15') {
       set({ couponCode: code.toUpperCase(), discountPercent: 15 });
       return true;
     }

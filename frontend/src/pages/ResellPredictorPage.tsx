@@ -9,7 +9,20 @@ const SneakerGraphCard: React.FC<{ product: Product; isTargeted?: boolean; cardR
   const profit = resell - retail;
   const roi = (((resell - retail) / retail) * 100).toFixed(1);
 
-  const graphPoints = [
+  const productId = product._id || product.slug;
+
+  const customSavedGraph = useMemo(() => {
+    try {
+      const saved = localStorage.getItem('sole_sneaker_graphs');
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (parsed[productId]) return parsed[productId];
+      }
+    } catch (e) {}
+    return null;
+  }, [productId]);
+
+  const graphPoints: Array<{ label: string; price: number }> = customSavedGraph || [
     { label: 'Q1 2025', price: Math.round(retail * 1.05) },
     { label: 'Q2 2025', price: Math.round(retail * 1.35) },
     { label: 'Q3 2025', price: Math.round(retail + profit * 0.45) },
@@ -18,21 +31,21 @@ const SneakerGraphCard: React.FC<{ product: Product; isTargeted?: boolean; cardR
     { label: '2027 FORECAST', price: Math.round(resell * 1.25) },
   ];
 
-  const maxPrice = Math.max(...graphPoints.map((p) => p.price));
-  const minPrice = Math.min(...graphPoints.map((p) => p.price));
+  const maxPrice = Math.max(...graphPoints.map((p: { label: string; price: number }) => p.price));
+  const minPrice = Math.min(...graphPoints.map((p: { label: string; price: number }) => p.price));
   const range = maxPrice - minPrice || 1;
 
   const svgWidth = 600;
   const svgHeight = 200;
   const padding = 30;
 
-  const points = graphPoints.map((pt, i) => {
+  const points = graphPoints.map((pt: { label: string; price: number }, i: number) => {
     const x = padding + (i / (graphPoints.length - 1)) * (svgWidth - padding * 2);
     const y = svgHeight - padding - ((pt.price - minPrice) / range) * (svgHeight - padding * 2);
     return { x, y, pt };
   });
 
-  const pathD = points.reduce((acc, curr, i) => {
+  const pathD = points.reduce((acc: string, curr: { x: number; y: number }, i: number) => {
     return i === 0 ? `M ${curr.x} ${curr.y}` : `${acc} L ${curr.x} ${curr.y}`;
   }, '');
 
@@ -41,10 +54,10 @@ const SneakerGraphCard: React.FC<{ product: Product; isTargeted?: boolean; cardR
   return (
     <div
       ref={cardRef}
-      className={`glass-panel p-6 sm:p-8 rounded-3xl border bg-gradient-to-br from-gray-900 via-gray-950 to-black text-white shadow-2xl transition-all group ${
+      className={`glass-panel p-6 sm:p-8 rounded-3xl border shadow-lg transition-all group bg-[#FFFDF5] ${
         isTargeted
-          ? 'border-[#E60023] ring-2 ring-[#E60023] shadow-[0_0_40px_rgba(230,0,35,0.4)]'
-          : 'border-black/10 hover:border-[#E60023]/60'
+          ? 'border-[#E60023] ring-2 ring-[#E60023] shadow-[0_0_30px_rgba(230,0,35,0.25)]'
+          : 'border-[#E8D5B0] hover:border-[#E60023]/60 hover:shadow-xl'
       }`}
     >
       {/* Targeted Badge */}
@@ -55,9 +68,9 @@ const SneakerGraphCard: React.FC<{ product: Product; isTargeted?: boolean; cardR
       )}
 
       {/* Sneaker Header Info */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-6 border-b border-gray-800">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-6 border-b border-[#E8D5B0]/70">
         <div className="flex items-center gap-4">
-          <div className="w-16 h-16 rounded-2xl bg-white p-2 border border-gray-700 shrink-0 flex items-center justify-center">
+          <div className="w-16 h-16 rounded-2xl bg-white p-2 border border-gray-200 shrink-0 flex items-center justify-center shadow-sm">
             <img
               src={product.images[0]}
               alt={product.name}
@@ -66,21 +79,21 @@ const SneakerGraphCard: React.FC<{ product: Product; isTargeted?: boolean; cardR
           </div>
           <div>
             <span className="text-[10px] font-black text-[#E60023] uppercase tracking-widest">{product.brand}</span>
-            <h3 className="font-display font-black text-lg sm:text-xl text-white uppercase tracking-tight line-clamp-1">{product.name}</h3>
+            <h3 className="font-display font-black text-lg sm:text-xl text-gray-900 uppercase tracking-tight line-clamp-1">{product.name}</h3>
             <div className="flex items-center gap-4 mt-1 text-xs">
-              <span className="text-gray-400">Retail: <strong className="text-white">${retail.toLocaleString()}</strong></span>
-              <span className="text-gray-400">Est. Resell: <strong className="text-emerald-400">${resell.toLocaleString()}</strong></span>
+              <span className="text-gray-600 font-medium">Retail: <strong className="text-gray-900 font-bold">${retail.toLocaleString()}</strong></span>
+              <span className="text-gray-600 font-medium">Est. Resell: <strong className="text-emerald-700 font-black">${resell.toLocaleString()}</strong></span>
             </div>
           </div>
         </div>
 
         <div className="flex items-center gap-3 shrink-0">
-          <span className="inline-flex items-center gap-1 px-3.5 py-1.5 rounded-full bg-emerald-500/20 text-emerald-400 font-extrabold text-xs border border-emerald-500/30">
-            <TrendingUp className="w-4 h-4" /> +${profit.toLocaleString()} ({roi}%)
+          <span className="inline-flex items-center gap-1 px-3.5 py-1.5 rounded-full bg-emerald-100 text-emerald-800 font-extrabold text-xs border border-emerald-300/60 shadow-sm">
+            <TrendingUp className="w-4 h-4 text-emerald-700" /> +${profit.toLocaleString()} ({roi}%)
           </span>
           <Link
             to={`/product/${product.slug}`}
-            className="px-4 py-2 rounded-full bg-white text-black hover:bg-[#E60023] hover:text-white text-xs font-black transition-all uppercase tracking-wider flex items-center gap-1 shadow-md"
+            className="px-4 py-2 rounded-full bg-black text-white hover:bg-[#E60023] text-xs font-black transition-all uppercase tracking-wider flex items-center gap-1 shadow-md"
           >
             VIEW SNEAKER <ArrowRight className="w-3.5 h-3.5" />
           </Link>
@@ -89,39 +102,39 @@ const SneakerGraphCard: React.FC<{ product: Product; isTargeted?: boolean; cardR
 
       {/* SVG Sparkline Price Chart */}
       <div className="pt-6">
-        <div className="flex items-center justify-between text-xs text-gray-400 mb-2">
-          <span className="font-bold flex items-center gap-1 text-white">
+        <div className="flex items-center justify-between text-xs text-gray-600 mb-2">
+          <span className="font-black flex items-center gap-1.5 text-gray-900 uppercase tracking-wider">
             <BarChart3 className="w-4 h-4 text-[#E60023]" /> HISTORICAL & FORECAST PRICE TRAJECTORY
           </span>
-          <span>Timeframe: 2025 - 2027 AI Model</span>
+          <span className="font-semibold text-gray-600">Timeframe: 2025 - 2027 AI Model</span>
         </div>
 
         <div className="w-full overflow-x-auto">
           <svg viewBox={`0 0 ${svgWidth} ${svgHeight}`} className="w-full h-48 overflow-visible">
             <defs>
               <linearGradient id={`pageChartGrad_${product._id}`} x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#E60023" stopOpacity="0.45" />
-                <stop offset="100%" stopColor="#E60023" stopOpacity="0.0" />
+                <stop offset="0%" stopColor="#E60023" stopOpacity="0.35" />
+                <stop offset="100%" stopColor="#E60023" stopOpacity="0.02" />
               </linearGradient>
             </defs>
 
             {/* Grid lines */}
-            <line x1={padding} y1={padding} x2={svgWidth - padding} y2={padding} stroke="#333" strokeDasharray="3 3" />
-            <line x1={padding} y1={svgHeight / 2} x2={svgWidth - padding} y2={svgHeight / 2} stroke="#333" strokeDasharray="3 3" />
-            <line x1={padding} y1={svgHeight - padding} x2={svgWidth - padding} y2={svgHeight - padding} stroke="#333" />
+            <line x1={padding} y1={padding} x2={svgWidth - padding} y2={padding} stroke="#D1D5DB" strokeDasharray="3 3" />
+            <line x1={padding} y1={svgHeight / 2} x2={svgWidth - padding} y2={svgHeight / 2} stroke="#D1D5DB" strokeDasharray="3 3" />
+            <line x1={padding} y1={svgHeight - padding} x2={svgWidth - padding} y2={svgHeight - padding} stroke="#9CA3AF" />
 
             {/* Area & Path */}
             <path d={areaD} fill={`url(#pageChartGrad_${product._id})`} />
             <path d={pathD} fill="none" stroke="#E60023" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" />
 
             {/* Points & Labels */}
-            {points.map((pt, i) => (
+            {points.map((pt: { x: number; y: number; pt: { label: string; price: number } }, i: number) => (
               <g key={i} className="group/pt cursor-pointer">
                 <circle cx={pt.x} cy={pt.y} r="5.5" className="fill-black stroke-[#E60023] stroke-[3]" />
-                <text x={pt.x} y={pt.y - 12} textAnchor="middle" fill="#FFFFFF" fontSize="9.5" fontWeight="bold">
+                <text x={pt.x} y={pt.y - 12} textAnchor="middle" fill="#111827" fontSize="10" fontWeight="800">
                   ${pt.pt.price.toLocaleString()}
                 </text>
-                <text x={pt.x} y={svgHeight - 8} textAnchor="middle" fill="#9CA3AF" fontSize="8.5" fontWeight="600">
+                <text x={pt.x} y={svgHeight - 8} textAnchor="middle" fill="#374151" fontSize="9" fontWeight="700">
                   {pt.pt.label}
                 </text>
               </g>
@@ -184,20 +197,31 @@ export const ResellPredictorPage: React.FC = () => {
         
         {/* Page Hero Header */}
         <div className="p-8 sm:p-12 rounded-3xl bg-black text-white border border-gray-800 shadow-2xl relative overflow-hidden">
+          {/* Background Image Overlay */}
+          <div className="absolute inset-0 z-0 opacity-80">
+            <img
+              src="/images/resell_predictor_bg.jpg"
+              alt="Vintage Air Jordan Collection"
+              className="w-full h-full object-cover object-center filter contrast-110 brightness-95"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/50 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent" />
+          </div>
+
           <div className="relative z-10 max-w-3xl space-y-4">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#E60023] text-white text-[11px] font-black tracking-widest uppercase shadow-md">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#D52122] text-white text-[11px] font-black tracking-widest uppercase shadow-md">
               <Zap className="w-3.5 h-3.5 fill-white" /> HYPED & LIMITED GRAILS MARKET ENGINE
             </div>
-            <h1 className="font-display text-4xl sm:text-6xl font-black uppercase tracking-tight text-white">
+            <h1 className="font-display text-4xl sm:text-6xl font-black uppercase tracking-tight text-white drop-shadow-md">
               RESELL VALUE PREDICTOR
             </h1>
-            <p className="text-gray-300 text-sm sm:text-base font-medium leading-relaxed">
-              Real-time market valuation curves, profit margins, and 2025–2027 AI price forecasts exclusively for the Hyped & Limited Edition sneakers on our platform.
+            <p className="text-gray-200 text-sm sm:text-base font-medium leading-relaxed max-w-2xl drop-shadow-sm">
+              Real-time market valuation curves, profit margins, and AI price forecasts exclusively for the Hyped & Limited Edition sneakers on our platform.
             </p>
           </div>
 
           {/* Background Ambient Glow */}
-          <div className="absolute right-0 top-0 w-96 h-96 bg-[#E60023]/15 blur-3xl pointer-events-none rounded-full" />
+          <div className="absolute right-0 top-0 w-96 h-96 bg-[#D52122]/20 blur-3xl pointer-events-none rounded-full" />
         </div>
 
         {/* Top Summary Metrics */}

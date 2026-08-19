@@ -10,6 +10,8 @@ import { connectDB } from './config/db.js';
 import authRoutes from './routes/authRoutes.js';
 import productRoutes from './routes/productRoutes.js';
 import aiRoutes from './routes/aiRoutes.js';
+import orderRoutes from './routes/orderRoutes.js';
+import contactRoutes from './routes/contactRoutes.js';
 
 dotenv.config();
 
@@ -37,6 +39,8 @@ connectDB();
 app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/products', productRoutes);
 app.use('/api/v1/ai', aiRoutes);
+app.use('/api/v1/orders', orderRoutes);
+app.use('/api/v1/contact', contactRoutes);
 
 // Health Check
 app.get('/api/v1/health', (req, res) => {

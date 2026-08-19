@@ -1,11 +1,13 @@
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { CheckCircle2, Package, ArrowRight, ShieldCheck } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { useAuthStore } from '../store/useAuthStore';
 
 export const OrderSuccess: React.FC = () => {
   const { addXP } = useAuthStore();
+  const location = useLocation();
+  const orderId = location.state?.orderId || 'SOLE-984210';
 
   useEffect(() => {
     addXP(150);
@@ -13,30 +15,31 @@ export const OrderSuccess: React.FC = () => {
     confetti({
       particleCount: 80,
       spread: 70,
-      origin: { y: 0.6 }
+      origin: { y: 0.6 },
+      colors: ['#D52122', '#FFF7E5', '#B01A1B', '#FFF0D0']
     });
   }, []);
 
   return (
-    <div className="min-h-screen bg-white text-black pt-32 pb-20 px-4 max-w-xl mx-auto text-center">
+    <div className="min-h-screen bg-[#FFF7E5] text-[#1A1008] pt-32 pb-20 px-4 max-w-xl mx-auto text-center">
       
-      <div className="glass-panel rounded-3xl p-8 border border-black/10 space-y-6 bg-white shadow-lg">
-        <CheckCircle2 className="w-16 h-16 text-green-600 mx-auto animate-bounce" />
+      <div className="glass-panel rounded-3xl p-8 border border-[#E8D5B0] space-y-6 shadow-lg">
+        <CheckCircle2 className="w-16 h-16 text-[#D52122] mx-auto animate-bounce" />
         
         <div>
-          <span className="text-xs font-bold text-[#E60023] uppercase tracking-widest">+150 VIP COLLECTOR XP EARNED!</span>
-          <h1 className="font-display text-3xl font-black uppercase text-black mt-1">ORDER CONFIRMED</h1>
-          <p className="text-xs text-gray-600 mt-2 font-medium">
-            Your tracking ID <strong className="text-black font-bold">#SOLE-984210</strong> has been generated and dispatched to your email.
+          <span className="text-xs font-bold text-[#D52122] uppercase tracking-widest">+150 COLLECTOR XP EARNED!</span>
+          <h1 className="font-display text-3xl font-black uppercase text-[#1A1008] mt-1">ORDER CONFIRMED</h1>
+          <p className="text-xs text-[#8C6E50] mt-2 font-medium">
+            Your tracking ID <strong className="text-[#1A1008] font-bold">#{orderId}</strong> has been generated and dispatched to your email.
           </p>
         </div>
 
-        <div className="bg-gray-50 p-4 rounded-2xl border border-gray-200 text-xs text-left space-y-2 font-medium">
-          <div className="flex justify-between text-gray-600">
+        <div className="bg-[#FFF0D0] p-4 rounded-2xl border border-[#E8D5B0] text-xs text-left space-y-2 font-medium">
+          <div className="flex justify-between text-[#8C6E50]">
             <span>Carrier</span>
-            <span className="text-black font-bold">DHL Cyber-Express</span>
+            <span className="text-[#1A1008] font-bold">DHL Cyber-Express</span>
           </div>
-          <div className="flex justify-between text-gray-600">
+          <div className="flex justify-between text-[#8C6E50]">
             <span>Estimated Delivery</span>
             <span className="text-green-600 font-bold">2-3 Business Days</span>
           </div>
@@ -45,13 +48,13 @@ export const OrderSuccess: React.FC = () => {
         <div className="flex flex-col sm:flex-row gap-3 pt-2">
           <Link
             to="/account"
-            className="flex-1 bg-black text-white py-3.5 rounded-2xl font-bold text-xs hover:bg-[#E60023] transition-colors shadow-md"
+            className="flex-1 bg-[#D52122] text-[#FFF7E5] py-3.5 rounded-2xl font-bold text-xs hover:bg-[#B01A1B] transition-colors shadow-md"
           >
             TRACK ORDER STATUS
           </Link>
           <Link
             to="/shop"
-            className="flex-1 bg-gray-100 text-black py-3.5 rounded-2xl font-bold text-xs hover:bg-gray-200 border border-gray-300 transition-colors"
+            className="flex-1 bg-[#FFF0D0] text-[#1A1008] py-3.5 rounded-2xl font-bold text-xs hover:bg-[#E8D5B0] border border-[#E8D5B0] transition-colors"
           >
             CONTINUE SHOPPING
           </Link>

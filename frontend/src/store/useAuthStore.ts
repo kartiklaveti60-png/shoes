@@ -4,7 +4,7 @@ export interface UserProfile {
   id: string;
   name: string;
   email: string;
-  role: 'customer' | 'admin' | 'vip';
+  role: 'customer' | 'admin';
   avatar?: string;
   xp: number;
   tier: 'GHOST' | 'SHADOW' | 'TITAN' | 'LEGEND';
@@ -25,7 +25,7 @@ const initialUser: UserProfile = {
   id: 'usr_titan_alex',
   name: 'Alex Mercer',
   email: 'alex.mercer@future.sole',
-  role: 'vip',
+  role: 'customer',
   avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=300',
   xp: 1450,
   tier: 'TITAN',

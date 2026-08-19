@@ -34,18 +34,18 @@ export const AISearchModal: React.FC<{ isOpen: boolean; onClose: () => void }> =
   return (
     <div className="fixed inset-0 z-[100] flex items-start justify-center pt-24 px-4">
       {/* Overlay */}
-      <div onClick={onClose} className="fixed inset-0 bg-black/30 backdrop-blur-sm animate-in fade-in" />
+      <div onClick={onClose} className="fixed inset-0 bg-[#1A1008]/25 backdrop-blur-sm animate-in fade-in" />
 
       {/* Modal */}
-      <div className="relative w-full max-w-2xl bg-white border border-black/10 rounded-3xl p-6 shadow-2xl z-10 text-black animate-in zoom-in-95 duration-200">
+      <div className="relative w-full max-w-2xl bg-[#FFF7E5] border border-[#E8D5B0] rounded-3xl p-6 shadow-2xl z-10 text-[#1A1008] animate-in zoom-in-95 duration-200">
         
         {/* Header */}
-        <div className="flex items-center justify-between pb-4 border-b border-black/10">
+        <div className="flex items-center justify-between pb-4 border-b border-[#E8D5B0]">
           <div className="flex items-center gap-2">
-            <Sparkles className="w-5 h-5 text-[#E60023] animate-pulse" />
-            <h3 className="font-display font-black text-lg text-black">AI POWERED SEARCH</h3>
+            <Sparkles className="w-5 h-5 text-[#D52122] animate-pulse" />
+            <h3 className="font-display font-black text-lg text-[#1A1008]">AI POWERED SEARCH</h3>
           </div>
-          <button onClick={onClose} className="p-1 text-gray-500 hover:text-black">
+          <button onClick={onClose} className="p-1 text-[#8C6E50] hover:text-[#D52122] transition-colors">
             <X className="w-5 h-5" />
           </button>
         </div>
@@ -57,17 +57,17 @@ export const AISearchModal: React.FC<{ isOpen: boolean; onClose: () => void }> =
             placeholder="Describe any sneaker, aesthetic, or vibe (e.g. 'cyberpunk running shoe')..."
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            className="w-full bg-gray-50 border border-gray-300 rounded-2xl pl-12 pr-24 py-4 text-sm text-black placeholder-gray-500 focus:outline-none focus:border-black transition-all"
+            className="w-full bg-[#FFF0D0] border border-[#E8D5B0] rounded-2xl pl-12 pr-24 py-4 text-sm text-[#1A1008] placeholder-[#8C6E50] focus:outline-none focus:border-[#D52122] transition-all"
             autoFocus
           />
-          <Search className="w-5 h-5 absolute left-4 top-4 text-gray-500" />
+          <Search className="w-5 h-5 absolute left-4 top-4 text-[#8C6E50]" />
           
           <div className="absolute right-3 top-2.5 flex items-center gap-1">
             <button
               type="button"
               onClick={handleVoiceSearch}
               className={`p-2 rounded-xl border transition-all ${
-                isListening ? 'bg-[#E60023] text-white animate-bounce border-[#E60023]' : 'bg-gray-100 text-gray-700 hover:text-black border-gray-300'
+                isListening ? 'bg-[#D52122] text-[#FFF7E5] animate-bounce border-[#D52122]' : 'bg-[#FFF0D0] text-[#8C6E50] hover:text-[#1A1008] border-[#E8D5B0]'
               }`}
               title="Voice Search"
             >
@@ -75,7 +75,7 @@ export const AISearchModal: React.FC<{ isOpen: boolean; onClose: () => void }> =
             </button>
             <button
               type="submit"
-              className="bg-black text-white p-2 rounded-xl hover:bg-[#E60023] transition-colors"
+              className="bg-[#D52122] text-[#FFF7E5] p-2 rounded-xl hover:bg-[#B01A1B] transition-colors"
             >
               <ArrowRight className="w-4 h-4" />
             </button>
@@ -83,15 +83,15 @@ export const AISearchModal: React.FC<{ isOpen: boolean; onClose: () => void }> =
         </form>
 
         {/* Visual Search Upload Zone */}
-        <div className="mt-6 p-4 rounded-2xl border border-dashed border-gray-300 bg-gray-50 text-center hover:border-black transition-colors cursor-pointer group">
-          <Upload className="w-6 h-6 mx-auto text-gray-500 group-hover:text-black transition-colors" />
-          <p className="text-xs font-bold text-black mt-2">Visual Image Search</p>
-          <p className="text-[11px] text-gray-500">Drag & drop any outfit or sneaker photo to find exact matches</p>
+        <div className="mt-6 p-4 rounded-2xl border border-dashed border-[#E8D5B0] bg-[#FFF0D0] text-center hover:border-[#D52122] transition-colors cursor-pointer group">
+          <Upload className="w-6 h-6 mx-auto text-[#8C6E50] group-hover:text-[#D52122] transition-colors" />
+          <p className="text-xs font-bold text-[#1A1008] mt-2">Visual Image Search</p>
+          <p className="text-[11px] text-[#8C6E50]">Drag & drop any outfit or sneaker photo to find exact matches</p>
         </div>
 
         {/* AI Suggested Prompts */}
         <div className="mt-6">
-          <p className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3">Trending AI Searches</p>
+          <p className="text-xs font-bold text-[#8C6E50] uppercase tracking-wider mb-3">Trending AI Searches</p>
           <div className="flex flex-wrap gap-2">
             {aiSuggestions.map((prompt, idx) => (
               <button
@@ -100,7 +100,7 @@ export const AISearchModal: React.FC<{ isOpen: boolean; onClose: () => void }> =
                   onClose();
                   navigate(`/shop?search=${encodeURIComponent(prompt)}`);
                 }}
-                className="text-xs bg-gray-100 hover:bg-black hover:text-white text-gray-700 px-3 py-1.5 rounded-full border border-gray-200 transition-all text-left font-medium"
+                className="text-xs bg-[#FFF0D0] hover:bg-[#D52122] hover:text-[#FFF7E5] text-[#8C6E50] px-3 py-1.5 rounded-full border border-[#E8D5B0] hover:border-[#D52122] transition-all text-left font-medium"
               >
                 ✦ {prompt}
               </button>

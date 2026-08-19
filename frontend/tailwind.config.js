@@ -8,19 +8,28 @@ export default {
   theme: {
     extend: {
       colors: {
-        bgPrimary: '#FFFFFF',
-        bgCard: '#F8F8F9',
-        bgCardHover: '#F1F1F3',
-        accent: '#000000',
-        cyberOrange: '#E60023',
-        cyberRed: '#E60023',
-        chicagoRed: '#E60023',
-        chicagoRedDark: '#C8102E',
-        cyberGold: '#EAB308',
+        // === NEW PALETTE ===
+        warmVanilla: '#FFF7E5',
+        vintageRouge: '#D52122',
+        vintageRougeDark: '#B01A1B',
+        warmDark: '#1A1008',
+        warmMid: '#8C6E50',
+        warmSurface: '#FFF0D0',
+        warmBorder: '#E8D5B0',
+        // Legacy aliases mapped to new palette
+        bgPrimary: '#FFF7E5',
+        bgCard: '#FFF0D0',
+        bgCardHover: '#FFE8B8',
+        accent: '#D52122',
+        cyberOrange: '#D52122',
+        cyberRed: '#D52122',
+        chicagoRed: '#D52122',
+        chicagoRedDark: '#B01A1B',
+        cyberGold: '#D52122',
         cyberSuccess: '#16A34A',
-        cyberError: '#DC2626',
-        glassBorder: 'rgba(0, 0, 0, 0.08)',
-        glassBg: 'rgba(255, 255, 255, 0.85)'
+        cyberError: '#D52122',
+        glassBorder: 'rgba(213, 33, 34, 0.12)',
+        glassBg: 'rgba(255, 247, 229, 0.92)'
       },
       fontFamily: {
         satoshi: ['Satoshi', 'sans-serif'],
@@ -29,10 +38,11 @@ export default {
         display: ['Syncopate', 'sans-serif']
       },
       boxShadow: {
-        'glow-orange': '0 10px 30px -5px rgba(230, 0, 35, 0.4)',
-        'glow-red': '0 10px 30px -5px rgba(230, 0, 35, 0.4)',
-        'glow-black': '0 10px 30px -5px rgba(0, 0, 0, 0.2)',
-        'glass-card': '0 10px 30px -10px rgba(0, 0, 0, 0.08)'
+        'glow-orange': '0 10px 30px -5px rgba(213, 33, 34, 0.3)',
+        'glow-red': '0 10px 30px -5px rgba(213, 33, 34, 0.3)',
+        'glow-black': '0 10px 30px -5px rgba(26, 16, 8, 0.15)',
+        'glass-card': '0 10px 30px -10px rgba(26, 16, 8, 0.08)',
+        'warm-sm': '0 4px 16px -4px rgba(213, 33, 34, 0.15)',
       },
       animation: {
         'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
