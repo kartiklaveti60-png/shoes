@@ -16,29 +16,24 @@ interface AuthState {
   user: UserProfile | null;
   token: string | null;
   isAuthenticated: boolean;
+  isAuthModalOpen: boolean;
+  openAuthModal: () => void;
+  closeAuthModal: () => void;
   login: (user: UserProfile, token: string) => void;
   logout: () => void;
   addXP: (amount: number) => void;
 }
 
-const initialUser: UserProfile = {
-  id: 'usr_titan_alex',
-  name: 'Alex Mercer',
-  email: 'alex.mercer@future.sole',
-  role: 'customer',
-  avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=300',
-  xp: 1450,
-  tier: 'TITAN',
-  coins: 480,
-  badges: ['EARLY_ADOPTER', 'SNEAKERHEAD_SUPREME', 'TOP_STYLIST']
-};
-
 export const useAuthStore = create<AuthState>((set) => ({
-  user: initialUser,
-  token: 'mock_jwt_token_2026',
-  isAuthenticated: true,
+  user: null,
+  token: null,
+  isAuthenticated: false,
+  isAuthModalOpen: false,
 
-  login: (user, token) => set({ user, token, isAuthenticated: true }),
+  openAuthModal: () => set({ isAuthModalOpen: true }),
+  closeAuthModal: () => set({ isAuthModalOpen: false }),
+
+  login: (user, token) => set({ user, token, isAuthenticated: true, isAuthModalOpen: false }),
   logout: () => set({ user: null, token: null, isAuthenticated: false }),
   addXP: (amount) => set((state) => {
     if (!state.user) return state;

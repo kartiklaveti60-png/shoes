@@ -8,6 +8,8 @@ import { Footer } from './components/layout/Footer';
 import { CartDrawer } from './components/cart/CartDrawer';
 import { AISearchModal } from './components/ai/AISearchModal';
 import { AIStylistDrawer } from './components/ai/AIStylistDrawer';
+import { AuthModal } from './components/auth/AuthModal';
+import { LoginPage } from './pages/LoginPage';
 
 import { Home } from './pages/Home';
 import { Shop } from './pages/Shop';
@@ -21,6 +23,7 @@ import { Lookbook } from './pages/Lookbook';
 import { Wishlist } from './pages/Wishlist';
 import { ResellPredictorPage } from './pages/ResellPredictorPage';
 import { ContactPage } from './pages/ContactPage';
+import { AdminPage } from './pages/AdminPage';
 
 export const App: React.FC = () => {
   const [searchOpen, setSearchOpen] = useState(false);
@@ -33,6 +36,9 @@ export const App: React.FC = () => {
           
           {/* Custom Luxury Magnetic Cursor */}
           <CustomCursor />
+
+          {/* Client Auth Modal */}
+          <AuthModal />
 
           {/* AI Search Overlay Modal */}
           <AISearchModal isOpen={searchOpen} onClose={() => setSearchOpen(false)} />
@@ -58,10 +64,12 @@ export const App: React.FC = () => {
               <Route path="/contact" element={<ContactPage />} />
               <Route path="/community" element={<Community />} />
               <Route path="/account" element={<Account />} />
+              <Route path="/login" element={<LoginPage />} />
               <Route path="/wishlist" element={<Wishlist />} />
               <Route path="/checkout" element={<Checkout />} />
               <Route path="/order-success" element={<OrderSuccess />} />
               <Route path="/lookbook" element={<Lookbook />} />
+              <Route path="/admin" element={<AdminPage />} />
             </Routes>
           </main>
 

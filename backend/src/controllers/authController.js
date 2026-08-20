@@ -65,7 +65,7 @@ export const loginUser = async (req, res) => {
         _id: isAdmin ? 'admin_123' : 'user_123',
         name: isAdmin ? 'SOLE Staff Admin' : 'Alex Mercer',
         email,
-        role: isAdmin ? 'admin' : 'vip',
+        role: isAdmin ? 'admin' : 'customer',
         avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=300',
         xp: 1450,
         tier: 'TITAN',

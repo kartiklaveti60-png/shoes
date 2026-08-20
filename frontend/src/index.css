@@ -51,12 +51,15 @@
   box-shadow: 0 15px 35px -10px rgba(213, 33, 34, 0.12);
 }
 
-/* Clean & Responsive Cursor Styling */
-a, button, input, select, [role="button"] {
-  cursor: pointer;
+/* Clean & Responsive Custom Cursor Styling */
+@media (pointer: fine) {
+  body, a, button, input, select, textarea, [role="button"], .cursor-pointer {
+    cursor: none !important;
+  }
 }
 
 /* Rouge glow shadow utility */
 .shadow-glow-red {
   box-shadow: 0 0 12px rgba(213, 33, 34, 0.45);
 }
+

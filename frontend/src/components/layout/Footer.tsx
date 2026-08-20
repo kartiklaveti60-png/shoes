@@ -49,6 +49,7 @@ export const Footer: React.FC = () => {
             <li><span className="hover:text-[#D52122] transition-colors cursor-pointer">3D Size Guide</span></li>
             <li><span className="hover:text-[#D52122] transition-colors cursor-pointer">Returns & Exchanges</span></li>
             <li><span className="hover:text-[#D52122] transition-colors cursor-pointer">Member Services</span></li>
+            <li><a href="http://localhost:5174" target="_blank" rel="noopener noreferrer" className="hover:text-[#D52122] transition-colors font-bold text-[#D52122]">Admin Portal ↗</a></li>
             <li><span className="hover:text-[#D52122] transition-colors cursor-pointer">Privacy Policy</span></li>
           </ul>
         </div>

@@ -14,7 +14,7 @@ const userSchema = new mongoose.Schema({
   name: { type: String, required: true, trim: true },
   email: { type: String, required: true, unique: true, lowercase: true, trim: true },
   password: { type: String, required: true, select: false },
-  role: { type: String, enum: ['customer', 'admin', 'vip'], default: 'customer' },
+  role: { type: String, enum: ['customer', 'admin'], default: 'customer' },
   avatar: { type: String, default: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=300' },
   bio: { type: String, default: 'Sneaker collector & fashion enthusiast.' },
   addresses: [addressSchema],

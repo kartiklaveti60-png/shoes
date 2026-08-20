@@ -70,7 +70,7 @@ npm run dev
 3. **AI 3D Foot Spatial Scanner**
    - Precise length and width measurement sliders with 99.2% sizing fit confidence.
 4. **Hyper Drops Release Calendar**
-   - Live countdown timer, VIP Tier locks (GHOST, SHADOW, TITAN, LEGEND), and instant drop notifications.
+   - Live countdown timer, tier locks (GHOST, SHADOW, TITAN, LEGEND), and instant drop notifications.
 5. **On-Foot Community Room**
    - Outfit gallery, likes, comments, user XP rewards, and Top Stylist leaderboard.
 6. **Express Fast Checkout**

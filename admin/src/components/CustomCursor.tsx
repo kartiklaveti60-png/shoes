@@ -96,10 +96,10 @@ export const CustomCursor: React.FC = () => {
         ref={dotRef}
         className={`fixed top-0 left-0 pointer-events-none z-[99999] rounded-full transition-transform duration-100 ease-out ${
           isClicked
-            ? 'w-2 h-2 bg-[#D52122] scale-150 shadow-[0_0_12px_#D52122]'
+            ? 'w-2 h-2 bg-red-600 scale-150 shadow-[0_0_12px_rgba(220,38,38,0.9)]'
             : isHovered
-            ? 'w-3 h-3 bg-[#D52122] scale-125 shadow-[0_0_10px_rgba(213,33,34,0.8)]'
-            : 'w-2.5 h-2.5 bg-[#1A1008] opacity-90'
+            ? 'w-3 h-3 bg-red-600 scale-125 shadow-[0_0_10px_rgba(220,38,38,0.8)]'
+            : 'w-2.5 h-2.5 bg-black opacity-90'
         }`}
         style={{ willChange: 'transform' }}
       />
@@ -109,15 +109,15 @@ export const CustomCursor: React.FC = () => {
         ref={ringRef}
         className={`fixed top-0 left-0 pointer-events-none z-[99998] flex items-center justify-center rounded-full transition-all duration-300 ease-out border ${
           isClicked
-            ? 'w-12 h-12 border-[#D52122] bg-[#D52122]/15 scale-90 shadow-[0_0_20px_rgba(213,33,34,0.3)]'
+            ? 'w-12 h-12 border-red-600 bg-red-500/15 scale-90 shadow-[0_0_20px_rgba(220,38,38,0.3)]'
             : isHovered
-            ? 'w-14 h-14 border-[#D52122] bg-[#D52122]/10 scale-100 shadow-[0_0_25px_rgba(213,33,34,0.25)] backdrop-blur-[1px]'
-            : 'w-8 h-8 border-[#1A1008]/25 bg-transparent scale-100'
+            ? 'w-14 h-14 border-red-600 bg-red-500/10 scale-100 shadow-[0_0_25px_rgba(220,38,38,0.25)] backdrop-blur-[1px]'
+            : 'w-8 h-8 border-black/25 bg-transparent scale-100'
         }`}
         style={{ willChange: 'transform' }}
       >
         {cursorText && (
-          <span className="text-[9px] font-bold tracking-widest uppercase text-[#D52122] px-1 animate-pulse">
+          <span className="text-[9px] font-bold tracking-widest uppercase text-red-600 px-1 animate-pulse">
             {cursorText}
           </span>
         )}

@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { ShoppingBag, Heart, Search, Sparkles, User, Menu, X, ShieldCheck } from 'lucide-react';
+import { ShoppingBag, Heart, Search, User, Menu, X, ShieldCheck, LogIn, LogOut, ChevronDown } from 'lucide-react';
 import { useCartStore } from '../../store/useCartStore';
 import { useWishlistStore } from '../../store/useWishlistStore';
 import { useAuthStore } from '../../store/useAuthStore';
 
 export const Navbar: React.FC<{ onOpenSearch: () => void }> = ({ onOpenSearch }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [userDropdownOpen, setUserDropdownOpen] = useState(false);
   const location = useLocation();
   
   const { toggleCart, items } = useCartStore();
   const { wishlistIds } = useWishlistStore();
-  const { user } = useAuthStore();
+  const { user, isAuthenticated, openAuthModal, logout } = useAuthStore();
 
   const cartCount = items.reduce((sum, i) => sum + i.quantity, 0);
   const wishlistCount = wishlistIds.length;
@@ -21,7 +22,8 @@ export const Navbar: React.FC<{ onOpenSearch: () => void }> = ({ onOpenSearch })
     { label: 'Drops', path: '/drops', badge: 'HOT' },
     { label: 'Resell Predictor', path: '/resell-predictor', badge: 'AI' },
     { label: 'Community', path: '/community' },
-    { label: 'Lookbook', path: '/lookbook' }
+    { label: 'Lookbook', path: '/lookbook' },
+    { label: 'Admin', path: '/admin', badge: 'STAFF' }
   ];
 
   return (
@@ -114,21 +116,81 @@ export const Navbar: React.FC<{ onOpenSearch: () => void }> = ({ onOpenSearch })
             )}
           </button>
 
-          {/* User Account */}
-          <Link
-            to="/account"
-            className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#D52122]/8 hover:bg-[#D52122]/15 border border-[#E8D5B0] transition-colors"
-          >
-            <img
-              src={user?.avatar || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=100'}
-              alt={user?.name}
-              className="w-6 h-6 rounded-full object-cover border border-[#D52122]/30"
-            />
-            <span className="text-xs font-bold tracking-wider text-[#1A1008] flex items-center gap-1">
-              <ShieldCheck className="w-3.5 h-3.5 text-[#D52122]" />
-              {user?.tier || 'TITAN'}
-            </span>
-          </Link>
+          {/* User Account / Auth Button */}
+          {isAuthenticated && user ? (
+            <div className="relative hidden sm:block">
+              <button
+                onClick={() => setUserDropdownOpen(!userDropdownOpen)}
+                className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#D52122]/10 hover:bg-[#D52122]/20 border border-[#E8D5B0] transition-all cursor-pointer"
+              >
+                <img
+                  src={user.avatar || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=100'}
+                  alt={user.name}
+                  className="w-6 h-6 rounded-full object-cover border border-[#D52122]/40"
+                />
+                <span className="text-xs font-extrabold tracking-wider text-[#1A1008] flex items-center gap-1">
+                  <ShieldCheck className="w-3.5 h-3.5 text-[#D52122]" />
+                  {user.name || user.tier}
+                </span>
+                <ChevronDown className="w-3.5 h-3.5 text-[#8C6E50]" />
+              </button>
+
+              {/* Dropdown Menu */}
+              {userDropdownOpen && (
+                <div 
+                  className="absolute right-0 mt-2 w-56 glass-panel bg-[#FFF7E5] rounded-2xl border border-[#E8D5B0] shadow-xl p-3 z-50 animate-in fade-in zoom-in-95 duration-150"
+                  onMouseLeave={() => setUserDropdownOpen(false)}
+                >
+                  <div className="px-3 py-2 border-b border-[#E8D5B0] mb-2">
+                    <p className="text-xs font-black text-[#1A1008] uppercase truncate">{user.name}</p>
+                    <p className="text-[10px] text-[#8C6E50] truncate">{user.email}</p>
+                    <span className="inline-flex items-center gap-1 mt-1.5 text-[10px] font-bold bg-[#D52122] text-[#FFF7E5] px-2 py-0.5 rounded-full uppercase">
+                      <ShieldCheck className="w-3 h-3" /> {user.tier} MEMBER
+                    </span>
+                  </div>
+
+                  <Link
+                    to="/account"
+                    onClick={() => setUserDropdownOpen(false)}
+                    className="flex items-center gap-2.5 px-3 py-2 text-xs font-bold text-[#1A1008] hover:bg-[#FFF0D0] rounded-xl transition-colors"
+                  >
+                    <User className="w-4 h-4 text-[#D52122]" />
+                    My Account
+                  </Link>
+
+                  <a
+                    href="http://localhost:5174"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setUserDropdownOpen(false)}
+                    className="flex items-center gap-2.5 px-3 py-2 text-xs font-bold text-[#D52122] hover:bg-[#D52122]/10 rounded-xl transition-colors"
+                  >
+                    <ShieldCheck className="w-4 h-4 text-[#D52122]" />
+                    Admin Portal ↗
+                  </a>
+
+                  <button
+                    onClick={() => {
+                      logout();
+                      setUserDropdownOpen(false);
+                    }}
+                    className="w-full flex items-center gap-2.5 px-3 py-2 text-xs font-bold text-red-600 hover:bg-red-50 rounded-xl transition-colors text-left"
+                  >
+                    <LogOut className="w-4 h-4 text-red-600" />
+                    Log Out
+                  </button>
+                </div>
+              )}
+            </div>
+          ) : (
+            <button
+              onClick={openAuthModal}
+              className="hidden sm:flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#D52122] hover:bg-[#B8191A] text-[#FFF7E5] text-xs font-extrabold uppercase tracking-wider shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
+            >
+              <LogIn className="w-3.5 h-3.5 text-[#FFF7E5]" />
+              Log In / Register
+            </button>
+          )}
 
           {/* Mobile Menu Toggle */}
           <button
@@ -142,29 +204,61 @@ export const Navbar: React.FC<{ onOpenSearch: () => void }> = ({ onOpenSearch })
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden mt-3 glass-panel rounded-3xl p-6 border border-[#E8D5B0] flex flex-col gap-4 animate-in fade-in slide-in-from-top-4">
+        <div className="md:hidden mt-3 glass-panel bg-[#FFF7E5] rounded-3xl p-6 border border-[#E8D5B0] flex flex-col gap-4 animate-in fade-in slide-in-from-top-4">
           {navLinks.map((link) => (
             <Link
               key={link.path}
               to={link.path}
               onClick={() => setMobileMenuOpen(false)}
-              className="text-lg font-bold text-[#1A1008] hover:text-[#D52122] transition-colors py-1"
+              className="text-lg font-bold text-[#1A1008] hover:text-[#D52122] transition-colors py-1 flex items-center justify-between"
             >
-              {link.label}
+              <span>{link.label}</span>
+              {link.badge && (
+                <span className="text-[10px] bg-[#D52122] text-[#FFF7E5] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider">
+                  {link.badge}
+                </span>
+              )}
             </Link>
           ))}
-          <div className="pt-4 border-t border-[#E8D5B0] flex items-center justify-between">
-            <Link
-              to="/account"
-              onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center gap-3 text-sm font-bold text-[#1A1008]"
-            >
-              <User className="w-5 h-5 text-[#D52122]" />
-              My Account ({user?.tier})
-            </Link>
+          
+          <div className="pt-4 border-t border-[#E8D5B0] flex flex-col gap-3">
+            {isAuthenticated && user ? (
+              <>
+                <Link
+                  to="/account"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="flex items-center gap-3 text-sm font-bold text-[#1A1008]"
+                >
+                  <User className="w-5 h-5 text-[#D52122]" />
+                  My Profile ({user.name} - {user.tier})
+                </Link>
+                <button
+                  onClick={() => {
+                    logout();
+                    setMobileMenuOpen(false);
+                  }}
+                  className="flex items-center gap-3 text-sm font-bold text-red-600 text-left"
+                >
+                  <LogOut className="w-5 h-5 text-red-600" />
+                  Log Out
+                </button>
+              </>
+            ) : (
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  openAuthModal();
+                }}
+                className="w-full py-3 rounded-2xl bg-[#D52122] text-[#FFF7E5] text-xs font-black uppercase tracking-wider flex items-center justify-center gap-2 shadow-md"
+              >
+                <LogIn className="w-4 h-4" />
+                Client Log In / Register
+              </button>
+            )}
           </div>
         </div>
       )}
     </header>
   );
 };
+

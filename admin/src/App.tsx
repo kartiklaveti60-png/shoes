@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { CustomCursor } from './components/CustomCursor';
 import { 
   TrendingUp, Package, DollarSign, Flame, Plus, 
   ShieldCheck, Search, CheckCircle2, Clock, 
@@ -1097,6 +1098,8 @@ export const App: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-white text-black flex flex-col md:flex-row antialiased">
+      <CustomCursor />
+
       
       {/* Sidebar Navigation */}
       <aside className="w-full md:w-64 bg-gray-50 border-r border-gray-200 p-6 flex flex-col justify-between shrink-0">

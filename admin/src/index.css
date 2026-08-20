@@ -29,3 +29,11 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #000000;
 }
+
+/* Custom Luxury Pointer Styling for Admin */
+@media (pointer: fine) {
+  body, a, button, input, select, textarea, [role="button"], .cursor-pointer {
+    cursor: none !important;
+  }
+}
+

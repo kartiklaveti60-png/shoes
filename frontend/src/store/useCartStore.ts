@@ -32,19 +32,7 @@ interface CartState {
 }
 
 export const useCartStore = create<CartState>((set, get) => ({
-  items: [
-    {
-      id: 'prod_cyber_x-US 10-Stealth Obsidian',
-      productId: 'prod_cyber_x',
-      name: "Air Jordan 1 Game-Worn",
-      slug: 'air-jordan-1-game-worn',
-      price: 560000,
-      image: '/images/air-jordan-1-game-worn.jpg',
-      size: 'US 10',
-      color: 'Stealth Obsidian',
-      quantity: 1
-    }
-  ],
+  items: [],
   isOpen: false,
   couponCode: null,
   discountPercent: 0,

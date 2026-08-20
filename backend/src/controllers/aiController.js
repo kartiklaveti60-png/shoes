@@ -33,7 +33,7 @@ export const aiStylistChat = async (req, res) => {
     if (lowerMsg.includes("size") || lowerMsg.includes("fit")) {
       reply = "Based on our machine learning size scanner data, SOLE models run true to size. However, if you have wider feet, we advise going half a size up (e.g. US 10.5 instead of US 10).";
     } else if (lowerMsg.includes("drop") || lowerMsg.includes("release")) {
-      reply = "The next exclusive drop is the Air Jordan 1 Game-Worn releasing in 4 days. VIP Members (Titan & Legend tiers) receive 30-minute early access priority queueing.";
+      reply = "The next exclusive drop is the Air Jordan 1 Game-Worn releasing in 4 days. Members receive 30-minute early access priority queueing.";
     } else if (lowerMsg.includes("resell") || lowerMsg.includes("investment")) {
       reply = "Our predictive algorithm estimates a +85% value gain on the JORDAN MONOLITH RETRO HIGH within 6 months of release due to strict limited allocation of 1,000 numbered units.";
     }
