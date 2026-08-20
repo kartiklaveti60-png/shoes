@@ -7,6 +7,9 @@ import {
   BarChart2, MessageSquare, Image, Users, ShoppingBag, Mail, Send
 } from 'lucide-react';
 
+const API_BASE = import.meta.env.VITE_API_URL || '';
+
+
 interface OrderItem {
   id: string;
   user: string;
@@ -141,7 +144,7 @@ export const App: React.FC = () => {
   useEffect(() => {
     const fetchApiOrders = async () => {
       try {
-        const res = await fetch('http://localhost:5000/api/v1/orders');
+        const res = await fetch(`${API_BASE}/api/v1/orders`);
         const json = await res.json();
         if (json.success && Array.isArray(json.data)) {
           setOrders(json.data);
@@ -164,7 +167,7 @@ export const App: React.FC = () => {
     const fetchApiMessages = async () => {
       let apiMsgs: ClientMessageItem[] = [];
       try {
-        const res = await fetch('http://localhost:5000/api/v1/contact');
+        const res = await fetch(`${API_BASE}/api/v1/contact`);
         const json = await res.json();
         if (json.success && Array.isArray(json.data)) {
           apiMsgs = json.data.map((m: any) => ({
@@ -235,7 +238,7 @@ export const App: React.FC = () => {
     } catch (e) {}
 
     try {
-      await fetch(`http://localhost:5000/api/v1/contact/${id}`, {
+      await fetch(`${API_BASE}/api/v1/contact/${id}`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ status, adminReply: replyContent })
@@ -257,7 +260,7 @@ export const App: React.FC = () => {
     } catch (e) {}
 
     try {
-      await fetch(`http://localhost:5000/api/v1/contact/${id}`, { method: 'DELETE' });
+      await fetch(`${API_BASE}/api/v1/contact/${id}`, { method: 'DELETE' });
     } catch (err) {}
   };
 
@@ -811,7 +814,7 @@ export const App: React.FC = () => {
 
   const handleUpdateStatus = (id: string, status: OrderItem['status']) => {
     setOrders(prev => prev.map(o => o.id === id ? { ...o, status } : o));
-    fetch(`http://localhost:5000/api/v1/orders/${id}`, {
+    fetch(`${API_BASE}/api/v1/orders/${id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ status })
@@ -820,13 +823,13 @@ export const App: React.FC = () => {
 
   const handleDeleteOrder = (id: string) => {
     setOrders(prev => prev.filter(o => o.id !== id));
-    fetch(`http://localhost:5000/api/v1/orders/${id}`, { method: 'DELETE' }).catch(() => {});
+    fetch(`${API_BASE}/api/v1/orders/${id}`, { method: 'DELETE' }).catch(() => {});
   };
 
   const handleClearAllOrders = () => {
     if (window.confirm('Are you sure you want to clear all order records?')) {
       setOrders([]);
-      fetch('http://localhost:5000/api/v1/orders', { method: 'DELETE' }).catch(() => {});
+      fetch(`${API_BASE}/api/v1/orders`, { method: 'DELETE' }).catch(() => {});
     }
   };
 
@@ -849,7 +852,7 @@ export const App: React.FC = () => {
     };
     setOrders(prev => [newDemoOrder, ...prev]);
 
-    fetch('http://localhost:5000/api/v1/orders', {
+    fetch(`${API_BASE}/api/v1/orders`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(newDemoOrder)
