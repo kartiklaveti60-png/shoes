@@ -542,7 +542,7 @@ export const AdminPage: React.FC = () => {
   const totalInventoryStock = products.reduce((acc, p) => acc + p.stock, 0);
 
   return (
-    <div className="min-h-screen bg-white text-black flex flex-col md:flex-row pt-20 antialiased">
+    <div className="min-h-screen bg-white text-black flex flex-col md:flex-row antialiased">
 
       {/* Sidebar Navigation */}
       <aside className="w-full md:w-64 bg-gray-50 border-r border-gray-200 p-6 flex flex-col justify-between shrink-0">
