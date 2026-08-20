@@ -158,16 +158,14 @@ export const Navbar: React.FC<{ onOpenSearch: () => void }> = ({ onOpenSearch })
                     My Account
                   </Link>
 
-                  <a
-                    href="http://localhost:5174"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <Link
+                    to="/admin"
                     onClick={() => setUserDropdownOpen(false)}
                     className="flex items-center gap-2.5 px-3 py-2 text-xs font-bold text-[#D52122] hover:bg-[#D52122]/10 rounded-xl transition-colors"
                   >
                     <ShieldCheck className="w-4 h-4 text-[#D52122]" />
-                    Admin Portal ↗
-                  </a>
+                    Admin Portal
+                  </Link>
 
                   <button
                     onClick={() => {
