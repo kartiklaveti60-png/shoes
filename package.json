@@ -1,0 +1,11 @@
+{
+  "name": "sole-luxury-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "SOLE — Ultra Luxury Sneaker Platform Master Monorepo",
+  "scripts": {
+    "dev:backend": "npm --prefix backend run dev",
+    "dev:frontend": "npm --prefix frontend run dev",
+    "dev:admin": "npm --prefix admin run dev"
+  }
+}
